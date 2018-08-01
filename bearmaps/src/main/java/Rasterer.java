@@ -31,40 +31,46 @@ public class Rasterer {
             return RasterResultParams.queryFailed();
         }
 
-
         double queryDPP = lonDPP(params.lrlon, params.ullon, params.w);
         int depth = 0;
 
-        for (int depthcount = 0; depthcount <= MAX_DEPTH; depthcount ++) {
-            if (0.08789062 / ((2^depthcount) * 256) <= queryDPP) {
-                depth = depthcount;
-            }
-        }
-        
-        double tiledistance = 0.08789062 / (2^depth);
-
-        int startX = (int) Math.ceil(((params.ullon - -122.29980468) / tiledistance) - 2);
-        int endX = (int) Math.ceil((params.lrlon - params.ullon) / tiledistance);
-
-        int startY = (int) Math.ceil(((37.89219554 - params.ullat) / tiledistance) - 2);
-        int endY = (int) Math.ceil((params.ullat - params.lrlat) / tiledistance);
-
-        String[][] result = new String[endY-startY][endX-startX];
-        for (int currY = startY; currY <= endY; currY++) {
-            for (int currX = startX; currX <= endX; currX++) {
-                result[currY][currX] = "d" + depth + "_x" + currX + "_y" + currY + ".png";
+        for (int depthcount = 0; depthcount <= MAX_DEPTH; depthcount++) {
+            depth = depthcount;
+            if (MapServer.ROOT_LON_DELTA / ((Math.pow(2, depthcount)) * 256) <= queryDPP) {
+                break;
             }
         }
 
-        double RasterUllon = -122.29980468 + (tiledistance * startX);
-        double Rasterlrlon = -122.29980468 + (tiledistance * endX);
-        double RasterUllat = 37.89219554 - (tiledistance * startY);
-        double Rasterlrlat = 37.89219554 - (tiledistance * endY);
+        double tileLon = MapServer.ROOT_LON_DELTA / Math.pow(2, depth);
+        double tileLat = MapServer.ROOT_LAT_DELTA / Math.pow(2, depth);
+        //I think we should get 9 here.
+        int startX = (int) Math.floor((params.ullon - MapServer.ROOT_ULLON) / tileLon);
+        int endX = (int) Math.ceil((params.lrlon - MapServer.ROOT_ULLON) / tileLon);
+        //I think we should get 4 here if our tileDistanceLat is wrong.
+        int startY = (int) Math.floor((MapServer.ROOT_ULLAT - params.ullat) / tileLat);
+        int endY = (int) Math.ceil((MapServer.ROOT_ULLAT - params.lrlat) / tileLat);
+
+        double RasterUllon = MapServer.ROOT_ULLON + (tileLon * startX);
+        double RasterLrlon = MapServer.ROOT_ULLON + (tileLon * endX);
+        double RasterUllat = MapServer.ROOT_ULLAT - (tileLat * startY);
+        double RasterLrlat = MapServer.ROOT_ULLAT - (tileLat * endY);
+
+        String[][] result = new String[(endY - startY)][(endX - startX)];
+
+        if (depth == 0) {
+            result[0][0] = "d0_x0_y0.png";
+        } else {
+            for (int currY = startY; currY < endY; currY++) {
+                for (int currX = startX; currX < endX; currX++) {
+                    result[currY - startY][currX - startX] = "d" + depth + "_x" + currX + "_y" + currY + ".png";
+                }
+            }
+        }
 
         RasterResultParams.Builder toReturn = new RasterResultParams.Builder();
         toReturn = toReturn.setDepth(depth);
-        toReturn = toReturn.setRasterLrLat(Rasterlrlat);
-        toReturn = toReturn.setRasterLrLon(Rasterlrlon);
+        toReturn = toReturn.setRasterLrLat(RasterLrlat);
+        toReturn = toReturn.setRasterLrLon(RasterLrlon);
         toReturn = toReturn.setRasterUlLon(RasterUllon);
         toReturn = toReturn.setRasterUlLat(RasterUllat);
         toReturn = toReturn.setRenderGrid(result);
@@ -73,15 +79,6 @@ public class Rasterer {
         return toReturn.create();
     }
 
-    private String[][] populateRender(int depth, int startX, int endX, int startY, int endY) {
-        String[][] result = new String[endY-startY][endX-startX];
-        for (int currY = startY; currY <= endY; currY++) {
-            for (int currX = startX; currX <= endX; currX++) {
-                result[currY][currX] = "d" + depth + "_x" + currX + "_y" + currY + ".png";
-            }
-        }
-        return result;
-    }
     /**
      * Calculates the lonDPP of an image or query box
      * @param lrlon Lower right longitudinal value of the image or query box
