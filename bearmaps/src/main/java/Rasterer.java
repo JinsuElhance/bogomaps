@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.Map;
 
 /**
  * This class provides all code necessary to take a query box and produce
@@ -26,7 +27,7 @@ public class Rasterer {
      *               viewport width and height.
      * @return A valid RasterResultParams containing the computed results.
      */
-    public RasterResultParams getMapRaster(RasterRequestParams params) {
+    public static RasterResultParams getMapRaster(RasterRequestParams params) {
         if (params.ullon > params.lrlon || params.lrlat > params.ullat) {
             return RasterResultParams.queryFailed();
         }
@@ -43,12 +44,32 @@ public class Rasterer {
 
         double tileLon = MapServer.ROOT_LON_DELTA / Math.pow(2, depth);
         double tileLat = MapServer.ROOT_LAT_DELTA / Math.pow(2, depth);
-        //I think we should get 9 here.
-        int startX = (int) Math.floor((params.ullon - MapServer.ROOT_ULLON) / tileLon);
-        int endX = (int) Math.ceil((params.lrlon - MapServer.ROOT_ULLON) / tileLon);
-        //I think we should get 4 here if our tileDistanceLat is wrong.
-        int startY = (int) Math.floor((MapServer.ROOT_ULLAT - params.ullat) / tileLat);
-        int endY = (int) Math.ceil((MapServer.ROOT_ULLAT - params.lrlat) / tileLat);
+
+        double queryUllon = params.ullon;
+        double queryUllat = params.ullat;
+        double queryLrlon = params.lrlon;
+        double queryLrlat = params.lrlat;
+
+        if (MapServer.ROOT_ULLON > params.ullon) {
+            queryUllon = MapServer.ROOT_ULLON;
+        }
+
+        if (MapServer.ROOT_ULLAT < params.ullat) {
+            queryUllat = MapServer.ROOT_ULLAT;
+        }
+
+        if (MapServer.ROOT_LRLON < params.lrlon) {
+            queryLrlon = MapServer.ROOT_LRLON;
+        }
+
+        if (MapServer.ROOT_LRLAT < params.lrlat) {
+            queryLrlat = MapServer.ROOT_LRLAT;
+        }
+
+        int startX = (int) Math.floor((queryUllon - MapServer.ROOT_ULLON) / tileLon);
+        int endX = (int) Math.ceil((queryLrlon - MapServer.ROOT_ULLON) / tileLon);
+        int startY = (int) Math.floor((MapServer.ROOT_ULLAT - queryUllat) / tileLat);
+        int endY = (int) Math.ceil((MapServer.ROOT_ULLAT -  queryLrlat) / tileLat);
 
         double RasterUllon = MapServer.ROOT_ULLON + (tileLon * startX);
         double RasterLrlon = MapServer.ROOT_ULLON + (tileLon * endX);
@@ -86,7 +107,27 @@ public class Rasterer {
      * @param width Width of the query box or image
      * @return lonDPP
      */
-    private double lonDPP(double lrlon, double ullon, double width) {
+    private static double lonDPP(double lrlon, double ullon, double width) {
         return (lrlon - ullon) / width;
+    }
+
+    public static void main(String[] args) {
+        RasterRequestParams.Builder testBuilder = new RasterRequestParams.Builder();
+        testBuilder = testBuilder.setH(566.0);
+        testBuilder = testBuilder.setW(1091.0);
+        testBuilder = testBuilder.setLrlat(37.8318576119893);
+        testBuilder = testBuilder.setUllon(-122.30410170759153);
+        testBuilder = testBuilder.setLrlon(-122.2104604264636);
+        testBuilder = testBuilder.setUllat(37.870213571328854);
+        RasterRequestParams toTest = testBuilder.create();
+        RasterResultParams result = getMapRaster(testBuilder.create());
+        System.out.println("Lrlat = " + result.rasterLrLat);
+        System.out.println("Lrlon = " + result.rasterLrLon);
+        System.out.println("Ullat = " + result.rasterUlLat);
+        System.out.println("Ullon = " + result.rasterUlLon);
+        System.out.println("Depth = " + result.depth);
+        System.out.println("Render Grid : " + result.renderGrid);
+        System.out.println("Query Success? " + result.querySuccess);
+
     }
 }

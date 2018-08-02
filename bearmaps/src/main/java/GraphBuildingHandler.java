@@ -66,6 +66,7 @@ public class GraphBuildingHandler extends DefaultHandler {
         if (qName.equals("node")) {
             /* Encountering a new <node...> tag. */
             activeState = "node";
+            MapNode newNode = new MapNode(attributes.getValue("id"), attributes.getValue("lon"), attributes.getValue("lat"));
             // System.out.println("Node id: " + attributes.getValue("id"));
             // System.out.println("Node lon: " + attributes.getValue("lon"));
             // System.out.println("Node lat: " + attributes.getValue("lat"));
