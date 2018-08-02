@@ -1,3 +1,4 @@
+import example.CSCourseDB;
 import org.xml.sax.SAXException;
 
 import java.io.File;
@@ -7,7 +8,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Graph for storing all of the intersection (vertex) and road (edge) information.
@@ -19,6 +23,10 @@ import java.util.List;
  * @author Kevin Lowe, Antares Chen, Kevin Lin
  */
 public class GraphDB {
+
+    private final Map<Long, MapNode> nodes = new HashMap<>();
+    private final Map<Long, HashSet<Long>> connections = new HashMap<>();
+
     /**
      * This constructor creates and starts an XML parser, cleans the nodes, and prepares the
      * data structures for processing. Modify this constructor to initialize your data structures.
@@ -36,6 +44,20 @@ public class GraphDB {
         clean();
     }
 
+    public void add(MapNode toPlace) {
+        nodes.put(toPlace.id, toPlace);
+        connections.put(toPlace.id, new HashSet<>());
+    }
+
+    public void connect(Long fromId, Long toId) {
+        if (nodes.containsKey(fromId) && nodes.containsKey(toId)) {
+            connections.get(fromId).add(toId);
+            connections.get(toId).add(fromId);
+        } else {
+            System.out.println("Map does not contain both nodes");
+        }
+    }
+
     /**
      * Helper to process strings into their "cleaned" form, ignoring punctuation and capitalization.
      * @param s Input string.
@@ -44,14 +66,17 @@ public class GraphDB {
     private static String cleanString(String s) {
         return s.replaceAll("[^a-zA-Z ]", "").toLowerCase();
     }
-
     /**
      * Remove nodes with no connections from the graph.
      * While this does not guarantee that any two nodes in the remaining graph are connected,
      * we can reasonably assume this since typically roads are connected.
      */
     private void clean() {
-        // TODO
+        for (Long nodeId : connections.keySet()) {
+            if (connections.get(nodeId).size() == 0) {
+                connections.remove(nodeId);
+            }
+        }
     }
 
     /**
@@ -60,8 +85,10 @@ public class GraphDB {
      * @return The longitude of that vertex, or 0.0 if the vertex is not in the graph.
      */
     double lon(long v) {
-        // TODO
-        return 0;
+        if (nodes.containsKey(v)) {
+            return nodes.get(v).lon;
+        }
+        return 0.0;
     }
 
     /**
@@ -70,8 +97,10 @@ public class GraphDB {
      * @return The latitude of that vertex, or 0.0 if the vertex is not in the graph.
      */
     double lat(long v) {
-        // TODO
-        return 0;
+        if (nodes.containsKey(v)) {
+            return nodes.get(v).lat;
+        }
+        return 0.0;
     }
 
     /**
@@ -79,8 +108,7 @@ public class GraphDB {
      * @return An iterable of all vertex IDs in the graph.
      */
     Iterable<Long> vertices() {
-        // TODO
-        return Collections.emptySet();
+        return nodes.keySet();
     }
 
     /**
@@ -90,8 +118,7 @@ public class GraphDB {
      * iterable if the vertex is not in the graph.
      */
     Iterable<Long> adjacent(long v) {
-        // TODO
-        return Collections.emptySet();
+        return connections.get(v);
     }
 
     /**

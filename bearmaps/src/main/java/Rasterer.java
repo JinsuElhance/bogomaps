@@ -62,7 +62,7 @@ public class Rasterer {
             queryLrlon = MapServer.ROOT_LRLON;
         }
 
-        if (MapServer.ROOT_LRLAT < params.lrlat) {
+        if (MapServer.ROOT_LRLAT > params.lrlat) {
             queryLrlat = MapServer.ROOT_LRLAT;
         }
 
@@ -113,12 +113,12 @@ public class Rasterer {
 
     public static void main(String[] args) {
         RasterRequestParams.Builder testBuilder = new RasterRequestParams.Builder();
-        testBuilder = testBuilder.setH(566.0);
-        testBuilder = testBuilder.setW(1091.0);
-        testBuilder = testBuilder.setLrlat(37.8318576119893);
-        testBuilder = testBuilder.setUllon(-122.30410170759153);
-        testBuilder = testBuilder.setLrlon(-122.2104604264636);
-        testBuilder = testBuilder.setUllat(37.870213571328854);
+        testBuilder = testBuilder.setH(300.0);
+        testBuilder = testBuilder.setW(305.0);
+        testBuilder = testBuilder.setLrlat(37.848731523430196);
+        testBuilder = testBuilder.setUllon(-122.3027284165759);
+        testBuilder = testBuilder.setLrlon(-122.20908713544797);
+        testBuilder = testBuilder.setUllat(37.88708748276975);
         RasterRequestParams toTest = testBuilder.create();
         RasterResultParams result = getMapRaster(testBuilder.create());
         System.out.println("Lrlat = " + result.rasterLrLat);
@@ -126,7 +126,7 @@ public class Rasterer {
         System.out.println("Ullat = " + result.rasterUlLat);
         System.out.println("Ullon = " + result.rasterUlLon);
         System.out.println("Depth = " + result.depth);
-        System.out.println("Render Grid : " + result.renderGrid);
+        System.out.println("Render Grid : " + result.renderGrid[0][0]);
         System.out.println("Query Success? " + result.querySuccess);
 
     }

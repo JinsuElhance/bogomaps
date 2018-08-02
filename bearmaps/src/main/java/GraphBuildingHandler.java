@@ -2,6 +2,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -37,6 +38,15 @@ public class GraphBuildingHandler extends DefaultHandler {
     );
     private String activeState = "";
     private final GraphDB g;
+    private MapNode lastNode;
+    private String name;
+    private String amenity;
+    private String address;
+    private HashSet<Long> tempRefs = new HashSet<Long>();
+    private String highway;
+    private Long id;
+    private Long lon;
+    private Long lat;
 
     /**
      * Create a new GraphBuildingHandler.
@@ -66,19 +76,23 @@ public class GraphBuildingHandler extends DefaultHandler {
         if (qName.equals("node")) {
             /* Encountering a new <node...> tag. */
             activeState = "node";
-            MapNode newNode = new MapNode(attributes.getValue("id"), attributes.getValue("lon"), attributes.getValue("lat"));
             // System.out.println("Node id: " + attributes.getValue("id"));
             // System.out.println("Node lon: " + attributes.getValue("lon"));
             // System.out.println("Node lat: " + attributes.getValue("lat"));
-
+            id = Long.parseLong(attributes.getValue("id"));
+            lat = Long.parseLong(attributes.getValue("lat"));
+            lon = Long.parseLong(attributes.getValue("lon"));
             /* TODO: Use the above information to save a "node" to somewhere.
              * Hint: A graph-like structure would be nice. */
 
         } else if (qName.equals("way")) {
+            id = Long.parseLong(attributes.getValue("id"));
             /* Encountering a new <way...> tag. */
             activeState = "way";
             // System.out.println("Beginning a way...");
         } else if (activeState.equals("way") && qName.equals("nd")) {
+            tempRefs.add(Long.parseLong(attributes.getValue("ref")));
+
             /* While looking at a way, found a <nd...> tag. */
             // System.out.println("Node id in this way: " + attributes.getValue("ref"));
 
@@ -93,23 +107,30 @@ public class GraphBuildingHandler extends DefaultHandler {
             /* While looking at a way, found a <tag...> tag. */
             String k = attributes.getValue("k");
             String v = attributes.getValue("v");
-            if (k.equals("maxspeed")) {
-                // System.out.println("Max Speed: " + v);
+            if (k.equals("highway")) {
+                highway = v;
 
-                /* TODO: Set the max speed of the "current way" here. */
-
-            } else if (k.equals("highway")) {
                 // System.out.println("Highway type: " + v);
 
                 /* TODO: Figure out whether this way and its connections are valid.
+                //no
                  * Hint: Set a "flag". */
 
             } else if (k.equals("name")) {
+                name = v;
                 // System.out.println("Way Name: " + v);
             }
             // System.out.println("Tag with k=" + k + ", v=" + v + ".");
-        } else if (activeState.equals("node") && qName.equals("tag") && attributes.getValue("k")
-                .equals("name")) {
+        } else if (activeState.equals("node") && qName.equals("tag")) {
+            String k = attributes.getValue("k");
+            String v = attributes.getValue("v");
+            if (k.equals("name")) {
+                name = v;
+            } else if (k.equals("amenity")) {
+                amenity = v;
+            } else if (k.equals("addr:street")) {
+                address = v;
+            }
             /* While looking at a node, found a <tag...> with k="name". */
 
             /* TODO: Create a location.
@@ -134,7 +155,10 @@ public class GraphBuildingHandler extends DefaultHandler {
      */
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if (qName.equals("way")) {
+        if (qName.equals("way") && ALLOWED_HIGHWAY_TYPES.contains(highway)) {
+            MapNode birthed = new MapNode(id, tempRefs, name, highway);
+            g.add(birthed);
+        } else if (qName.equals("node"))
             /* Done looking at a way. (Finished looking at the nodes, speeds, etc.) */
 
             /* Hint: If you have stored the possible connections for this way, here's your chance to
