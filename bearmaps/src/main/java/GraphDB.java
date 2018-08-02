@@ -1,4 +1,3 @@
-import example.CSCourseDB;
 import org.xml.sax.SAXException;
 
 import java.io.File;
@@ -7,9 +6,9 @@ import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +23,8 @@ import java.util.Map;
  */
 public class GraphDB {
 
+    private final Map<Long, ArrayList<Edge>> edgeConnections = new HashMap<>();
     private final Map<Long, MapNode> nodes = new HashMap<>();
-    private final Map<Long, HashSet<Long>> connections = new HashMap<>();
 
     /**
      * This constructor creates and starts an XML parser, cleans the nodes, and prepares the
@@ -46,15 +45,26 @@ public class GraphDB {
 
     public void add(MapNode toPlace) {
         nodes.put(toPlace.id, toPlace);
-        connections.put(toPlace.id, new HashSet<>());
+        edgeConnections.put(toPlace.id, new ArrayList<>());
     }
 
-    public void connect(Long fromId, Long toId) {
-        if (nodes.containsKey(fromId) && nodes.containsKey(toId)) {
-            connections.get(fromId).add(toId);
-            connections.get(toId).add(fromId);
+    public void add(Way newWay) {
+
+        ArrayList<Long> listOf = new ArrayList<>(newWay.nodes);
+
+        if (listOf.size() > 1) {
+            int curr = 0;
+            int next = 1;
+            while (next < listOf.size()) {
+                MapNode nodeOne = nodes.get(listOf.get(curr));
+                MapNode nodeTwo = nodes.get(listOf.get(next));
+                edgeConnections.get(nodeOne.id).add(new Edge(nodeOne, nodeTwo, newWay.id));
+                edgeConnections.get(nodeTwo.id).add(new Edge(nodeOne, nodeTwo, newWay.id));
+                curr++;
+                next++;
+            }
         } else {
-            System.out.println("Map does not contain both nodes");
+            return;
         }
     }
 
@@ -72,9 +82,12 @@ public class GraphDB {
      * we can reasonably assume this since typically roads are connected.
      */
     private void clean() {
-        for (Long nodeId : connections.keySet()) {
-            if (connections.get(nodeId).size() == 0) {
-                connections.remove(nodeId);
+        ArrayList<Long> ids = new ArrayList<>(edgeConnections.keySet());
+
+        for (Long nodeId : ids) {
+            if (edgeConnections.get(nodeId).size() == 0) {
+                edgeConnections.remove(nodeId);
+                nodes.remove(nodeId);
             }
         }
     }
@@ -118,7 +131,18 @@ public class GraphDB {
      * iterable if the vertex is not in the graph.
      */
     Iterable<Long> adjacent(long v) {
-        return connections.get(v);
+        if (edgeConnections.containsKey(v)) {
+            List<Long> result = new ArrayList<Long>();
+            for (Edge edge : edgeConnections.get(v)) {
+                if (edge.oneEnd.id == v) {
+                    result.add(edge.twoEnd.id);
+                } else {
+                    result.add(edge.oneEnd.id);
+                }
+            }
+            return result;
+        }
+        return null;
     }
 
     /**
@@ -141,6 +165,18 @@ public class GraphDB {
         return R * c;
     }
 
+    public double distance(double longitude, double latitude, long v) {
+        double phi1 = Math.toRadians(lat(v));
+        double phi2 = Math.toRadians(latitude);
+        double dphi = Math.toRadians(latitude - lat(v));
+        double dlambda = Math.toRadians(longitude - lon(v));
+
+        double a = Math.sin(dphi / 2.0) * Math.sin(dphi / 2.0);
+        a += Math.cos(phi1) * Math.cos(phi2) * Math.sin(dlambda / 2.0) * Math.sin(dlambda / 2.0);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+
     /**
      * Returns the ID of the vertex closest to the given longitude and latitude.
      * @param lon The given longitude.
@@ -148,8 +184,16 @@ public class GraphDB {
      * @return The ID for the vertex closest to the <code>lon</code> and <code>lat</code>.
      */
     public long closest(double lon, double lat) {
-        // TODO
-        return 0;
+        double smallestDist = 1E99;
+        long smallestId = -1;
+        for (long checkId : nodes.keySet()) {
+            double currDist = distance(lon, lat, checkId);
+            if (currDist < smallestDist) {
+                smallestDist = currDist;
+                smallestId = checkId;
+            }
+        }
+        return smallestId;
     }
 
     /**
@@ -237,4 +281,19 @@ public class GraphDB {
      * @source https://gis.stackexchange.com/a/7298
      */
     private static final double K0 = 1.0;
+
+    public class Edge {
+
+        long wayId;
+        double distance;
+        MapNode oneEnd;
+        MapNode twoEnd;
+
+        public Edge(MapNode oneEnd, MapNode twoEnd, long wayId) {
+            this.oneEnd = oneEnd;
+            this.twoEnd = twoEnd;
+            this.wayId = wayId;
+            this.distance = distance(oneEnd.id, twoEnd.id);
+        }
+    }
 }

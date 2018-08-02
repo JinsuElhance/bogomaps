@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d68c7a0e-e3b1-4d13-aa84-567098c5e998" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Way.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GraphDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MapNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MapNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Rasterer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Rasterer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Rasterer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Rasterer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GraphBuildingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphBuildingHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GraphDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MapNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MapNode.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,89 +22,56 @@
     <session id="19696778">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="class" value="16" />
           <entry key="html" value="1" />
-          <entry key="java" value="14" />
-          <entry key="xml" value="1" />
+          <entry key="java" value="19" />
+          <entry key="xml" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="CLASS" value="16" />
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="14" />
-          <entry key="XML" value="1" />
+          <entry key="JAVA" value="19" />
+          <entry key="XML" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="4310" />
+          <entry key="java" value="9180" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4310" />
+          <entry key="JAVA" value="9180" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
+        <entry file="file://$PROJECT_DIR$/../library-su18/bearmaps/berkeley-2018-small.osm.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-507">
-              <caret line="60" column="7" lean-forward="true" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3811#3812#0" expanded="true" />
-                <element signature="e#3858#3859#0" expanded="true" />
-                <element signature="e#4174#4175#0" expanded="true" />
-                <element signature="e#4215#4216#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1280">
+              <caret line="221" column="24" selection-start-line="221" selection-start-column="14" selection-end-line="221" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../su18-JinsuElhance/lab26/Graph.java">
+        <entry file="file://$PROJECT_DIR$/../library-su18/bearmaps/tiny-clean.osm.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/example/CSCourseDBHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="53" column="46" lean-forward="true" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/berkeley-cs.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="34" column="17" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/example/CSCourseDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="80" column="9" lean-forward="true" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
+            <state relative-caret-position="330">
+              <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -110,43 +79,73 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="160" column="40" lean-forward="true" selection-start-line="160" selection-start-column="40" selection-end-line="160" selection-end-column="40" />
+            <state relative-caret-position="173">
+              <caret line="124" selection-start-line="124" selection-end-line="124" />
               <folding>
-                <element signature="e#2045#2051#0" expanded="true" />
+                <element signature="e#2144#2145#0" expanded="true" />
+                <element signature="e#2170#2171#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/MapNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="580">
+              <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphBuildingTiny.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="103">
+              <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Way.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#170#171#0" expanded="true" />
+                <element signature="e#189#190#0" expanded="true" />
+                <element signature="e#324#325#0" expanded="true" />
+                <element signature="e#352#353#0" expanded="true" />
+                <element signature="e#394#395#0" expanded="true" />
+                <element signature="e#424#425#0" expanded="true" />
+                <element signature="e#514#515#0" expanded="true" />
+                <element signature="e#546#547#0" expanded="true" />
+                <element signature="e#592#593#0" expanded="true" />
+                <element signature="e#630#631#0" expanded="true" />
+                <element signature="e#735#736#0" expanded="true" />
+                <element signature="e#774#775#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/MapNode.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+            <state relative-caret-position="431">
+              <caret line="250" column="7" lean-forward="true" selection-start-line="250" selection-start-column="7" selection-end-line="250" selection-end-column="7" />
               <folding>
-                <element signature="e#357#358#0" expanded="true" />
-                <element signature="e#376#377#0" expanded="true" />
-                <element signature="e#814#815#0" expanded="true" />
-                <element signature="e#842#843#0" expanded="true" />
-                <element signature="e#873#874#0" expanded="true" />
-                <element signature="e#900#901#0" expanded="true" />
-                <element signature="e#934#935#0" expanded="true" />
-                <element signature="e#964#965#0" expanded="true" />
-                <element signature="e#998#999#0" expanded="true" />
-                <element signature="e#1028#1029#0" expanded="true" />
-                <element signature="e#1062#1063#0" expanded="true" />
-                <element signature="e#1092#1093#0" expanded="true" />
-                <element signature="e#1143#1144#0" expanded="true" />
-                <element signature="e#1177#1178#0" expanded="true" />
-                <element signature="e#1217#1218#0" expanded="true" />
-                <element signature="e#1249#1250#0" expanded="true" />
-                <element signature="e#1295#1296#0" expanded="true" />
-                <element signature="e#1333#1334#0" expanded="true" />
-                <element signature="e#1379#1380#0" expanded="true" />
-                <element signature="e#1417#1418#0" expanded="true" />
-                <element signature="e#1463#1464#0" expanded="true" />
-                <element signature="e#1501#1502#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#4155#4156#0" expanded="true" />
+                <element signature="e#4222#4223#0" expanded="true" />
+                <element signature="e#5621#5622#0" expanded="true" />
+                <element signature="e#5658#5659#0" expanded="true" />
+                <element signature="e#10237#10238#0" expanded="true" />
+                <element signature="e#10283#10284#0" expanded="true" />
+                <element signature="e#10710#10711#0" expanded="true" />
+                <element signature="e#10756#10757#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,6 +160,14 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>way</find>
+      <find>3190966751</find>
+      <find>109193724</find>
+      <find>4676767080</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -169,9 +176,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/Node.java" />
         <option value="$PROJECT_DIR$/src/main/java/Rasterer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GraphDB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/MapNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Way.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GraphDB.java" />
       </list>
     </option>
   </component>
@@ -190,9 +198,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1315" />
-    <option name="y" value="-18" />
-    <option name="width" value="1298" />
-    <option name="height" value="1399" />
+    <option name="y" value="-19" />
+    <option name="width" value="1299" />
+    <option name="height" value="1400" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -200,7 +208,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -229,19 +236,29 @@
             </path>
             <path>
               <item name="bearmaps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="bearmaps" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bearmaps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bearmaps" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533178812397" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533203389287" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -257,7 +274,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestRasterer">
+  <component name="RunManager" selected="JUnit.TestGraphBuilding">
     <configuration name="MapServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MapServer" />
       <module name="bearmaps" />
@@ -265,17 +282,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Rasterer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Rasterer" />
+    <configuration name="TestGraphBuilding" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bearmaps" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestGraphBuilding" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestRasterer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGraphBuildingTiny" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bearmaps" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestRasterer" />
+      <option name="MAIN_CLASS_NAME" value="TestGraphBuildingTiny" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -283,23 +301,23 @@
     <configuration name="test1234.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/bearmaps/test1234.html">
       <method v="2" />
     </configuration>
-    <configuration name="test.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/bearmaps/test.html">
+    <configuration name="testTwelveImages.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/bearmaps/testTwelveImages.html">
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.MapServer" />
-      <item itemvalue="Application.Rasterer" />
+      <item itemvalue="JUnit.TestGraphBuildingTiny" />
+      <item itemvalue="JavaScript Debug.testTwelveImages.html" />
       <item itemvalue="JavaScript Debug.test1234.html" />
-      <item itemvalue="JavaScript Debug.test.html" />
-      <item itemvalue="JUnit.TestRasterer" />
+      <item itemvalue="JUnit.TestGraphBuilding" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestRasterer" />
-        <item itemvalue="Application.Rasterer" />
-        <item itemvalue="JavaScript Debug.test1234.html" />
-        <item itemvalue="JavaScript Debug.test.html" />
+        <item itemvalue="JUnit.TestGraphBuilding" />
+        <item itemvalue="JUnit.TestGraphBuildingTiny" />
+        <item itemvalue="JavaScript Debug.testTwelveImages.html" />
         <item itemvalue="Application.MapServer" />
+        <item itemvalue="JavaScript Debug.test1234.html" />
       </list>
     </recent_temporary>
   </component>
@@ -313,82 +331,110 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1533163352424</updated>
-      <workItem from="1533163355361" duration="15378000" />
+      <workItem from="1533163355361" duration="18885000" />
+      <workItem from="1533190791475" duration="12622000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestRasterer - 2018.08.01 at 17h 24m 32s.xml">
-      <configuration name="TestRasterer" configurationId="JUnit" />
+    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 38m 22s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 38m 56s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 39m 06s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 39m 12s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 40m 54s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 46m 09s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 46m 39s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 46m 58s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 47m 36s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuilding - 2018.08.02 at 02h 47m 57s.xml">
+      <configuration name="TestGraphBuilding" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15378000" />
+    <option name="totallyTimeSpent" value="31507000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.08591408" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13836163" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" weight="0.32930514" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32930514" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Style Checker" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.025176235" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5431472" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2960725" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.42900303" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Style Checker" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.06545821" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32930514" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info id="Image Layers" order="0" />
-      <window_info id="Designer" order="1" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.08591408" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32930514" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="4" weight="0.32930514" />
-      <window_info anchor="bottom" id="Style Checker" order="5" />
-      <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="Find" order="7" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.025176235" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.5431472" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Database" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13836163" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32326284" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.449144" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Style Checker" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.06545821" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32930514" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,19 +445,18 @@
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="((HashMap)edgeConnections).entrySet().toArray()[1]" custom="java.util.HashMap" />
+        <watch expression="((HashMap.Node)((HashMap)edgeConnections).entrySet().toArray()[6]).getValue()" custom="java.util.HashMap.Node,java.util.HashMap" />
+        <watch expression="((HashMap.Node)((HashMap)edgeConnections).entrySet().toArray()[6]).getValue()" language="JAVA" custom="java.util.HashMap.Node,java.util.HashMap" />
+      </configuration>
       <configuration name="Application">
         <watch expression="result.rasterUlLon" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Node.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/RasterResultParams.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-470">
@@ -446,95 +491,161 @@
         <state relative-caret-position="-56" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MapServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1868">
-          <caret line="29" column="77" lean-forward="true" selection-start-line="29" selection-start-column="77" selection-end-line="29" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../su18-JinsuElhance/lab26/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/berkeley-cs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="34" column="17" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-507">
-          <caret line="60" column="7" lean-forward="true" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3811#3812#0" expanded="true" />
-            <element signature="e#3858#3859#0" expanded="true" />
-            <element signature="e#4174#4175#0" expanded="true" />
-            <element signature="e#4215#4216#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/example/CSCourseDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="80" column="9" lean-forward="true" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/example/CSCourseDBHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="53" column="46" lean-forward="true" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+        <state relative-caret-position="1122">
+          <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java">
+    <entry file="file://$PROJECT_DIR$/berkeley-cs.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="160" column="40" lean-forward="true" selection-start-line="160" selection-start-column="40" selection-end-line="160" selection-end-column="40" />
-          <folding>
-            <element signature="e#2045#2051#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="748">
+          <caret line="34" column="17" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/example/CSCourseDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1430">
+          <caret line="80" column="9" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/statements/RunBefores.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/model/FrameworkMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/BlockJUnit4ClassRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="208" selection-start-line="208" selection-end-line="208" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../library-su18/bearmaps/berkeley-2018.osm.xml">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="-159390">
+          <caret line="32" column="23" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MapServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3893">
+          <caret line="240" column="18" selection-start-line="240" selection-start-column="18" selection-end-line="240" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../library-su18/bearmaps/berkeley-2018-small.osm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1280">
+          <caret line="221" column="24" selection-start-line="221" selection-start-column="14" selection-end-line="221" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../library-su18/bearmaps/tiny-clean.osm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphBuildingTiny.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/MapNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        <state relative-caret-position="580">
+          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Way.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
-            <element signature="e#357#358#0" expanded="true" />
-            <element signature="e#376#377#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
-            <element signature="e#842#843#0" expanded="true" />
-            <element signature="e#873#874#0" expanded="true" />
-            <element signature="e#900#901#0" expanded="true" />
-            <element signature="e#934#935#0" expanded="true" />
-            <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#998#999#0" expanded="true" />
-            <element signature="e#1028#1029#0" expanded="true" />
-            <element signature="e#1062#1063#0" expanded="true" />
-            <element signature="e#1092#1093#0" expanded="true" />
-            <element signature="e#1143#1144#0" expanded="true" />
-            <element signature="e#1177#1178#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1249#1250#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
-            <element signature="e#1333#1334#0" expanded="true" />
-            <element signature="e#1379#1380#0" expanded="true" />
-            <element signature="e#1417#1418#0" expanded="true" />
-            <element signature="e#1463#1464#0" expanded="true" />
-            <element signature="e#1501#1502#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#189#190#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#352#353#0" expanded="true" />
+            <element signature="e#394#395#0" expanded="true" />
+            <element signature="e#424#425#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+            <element signature="e#630#631#0" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="e#774#775#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+          <folding>
+            <element signature="e#2144#2145#0" expanded="true" />
+            <element signature="e#2170#2171#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="250" column="7" lean-forward="true" selection-start-line="250" selection-start-column="7" selection-end-line="250" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4155#4156#0" expanded="true" />
+            <element signature="e#4222#4223#0" expanded="true" />
+            <element signature="e#5621#5622#0" expanded="true" />
+            <element signature="e#5658#5659#0" expanded="true" />
+            <element signature="e#10237#10238#0" expanded="true" />
+            <element signature="e#10283#10284#0" expanded="true" />
+            <element signature="e#10710#10711#0" expanded="true" />
+            <element signature="e#10756#10757#0" expanded="true" />
           </folding>
         </state>
       </provider>
