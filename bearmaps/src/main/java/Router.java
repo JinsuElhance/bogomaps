@@ -28,6 +28,8 @@ public class Router {
                                           double stlon, double stlat,
                                           double destlon, double destlat) {
 
+        //Compare nodes in the fringe using a comparator that pulls the distance between two nodes from the bestDist hashMap
+
         PriorityQueue<Long> fringe = new PriorityQueue<>();
         //PriorityQueue<GraphDB.Edge> fringe = new PriorityQueue<>(Comparator.naturalOrder());
         HashMap<Long, Double> bestDist = new HashMap<>();
@@ -54,7 +56,8 @@ public class Router {
             visited.add(checkNode);
 
             for (Long w : g.adjacent(checkNode)) {
-                if ()
+               bestDist.put(w, bestDist.get(checkNode) + g.distance(checkNode, w));
+               fringe.add(w);
             }
         }
         return Collections.emptyList();
