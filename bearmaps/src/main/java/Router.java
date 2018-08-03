@@ -17,50 +17,63 @@ public class Router {
     /**
      * Return a <code>List</code> of vertex IDs corresponding to the shortest path from a given
      * starting coordinate and destination coordinate.
-     * @param g <code>GraphDB</code> data source.
-     * @param stlon The longitude of the starting coordinate.
-     * @param stlat The latitude of the starting coordinate.
+     *
+     * @param g       <code>GraphDB</code> data source.
+     * @param stlon   The longitude of the starting coordinate.
+     * @param stlat   The latitude of the starting coordinate.
      * @param destlon The longitude of the destination coordinate.
      * @param destlat The latitude of the destination coordinate.
      * @return The <code>List</code> of vertex IDs corresponding to the shortest path.
      */
+
+    //Compare nodes in the fringe using a comparator that pulls the distance between two nodes from the bestDist hashMap
     public static List<Long> shortestPath(GraphDB g,
-                                          double stlon, double stlat,
-                                          double destlon, double destlat) {
+                                   double stlon, double stlat,
+                                   double destlon, double destlat) {
 
-        //Compare nodes in the fringe using a comparator that pulls the distance between two nodes from the bestDist hashMap
-
-        PriorityQueue<Long> fringe = new PriorityQueue<>();
-        //PriorityQueue<GraphDB.Edge> fringe = new PriorityQueue<>(Comparator.naturalOrder());
         HashMap<Long, Double> bestDist = new HashMap<>();
-        HashMap<Long, Long> bestVertex = new HashMap<>();
         HashSet<Long> visited = new HashSet<>();
-        ArrayList<Long> path = new ArrayList<>();
+        HashMap<Long, ArrayList<Long>> paths = new HashMap<>();
 
         long sourceNode = g.closest(stlon, stlat);
-        fringe.add(sourceNode);
+        long destNode = g.closest(destlon, destlat);
+        PriorityQueue<Long> fringe = new PriorityQueue<>((o1, o2) -> Double.compare((bestDist.get(o1) + g.distance(o1, sourceNode)), bestDist.get(o2) + g.distance(o2, sourceNode)));
 
-        bestDist.put(sourceNode, 1E99);
+        fringe.add(sourceNode);
+        visited.add(sourceNode);
+
+        for (Long vertex : g.vertices()) {
+            bestDist.put(vertex, 1E99);
+        }
+
+        bestDist.put(sourceNode, 0.0);
+
 
         while (!fringe.isEmpty()) {
-            long checkNode = fringe.poll();
 
-            if (visited.contains(checkNode)) {
-                return null;
+            Long checkNode = fringe.poll();
+
+            while (visited.contains(checkNode) && !fringe.isEmpty()) {
+                checkNode = fringe.poll();
             }
 
-            if (g.lat(checkNode) == destlat && g.lon(checkNode) == destlon) {
-                return path;
+            if (checkNode.equals(destNode)) {
+                return paths.get(checkNode);
             }
 
             visited.add(checkNode);
 
             for (Long w : g.adjacent(checkNode)) {
-               bestDist.put(w, bestDist.get(checkNode) + g.distance(checkNode, w));
-               fringe.add(w);
+                if (bestDist.get(checkNode) + g.distance(checkNode, w) < bestDist.get(w)) {
+                    bestDist.put(w, bestDist.get(checkNode) + g.distance(checkNode, w));
+                    fringe.add(w);
+                    ArrayList<Long> newPath = new ArrayList<>(paths.get(checkNode));
+                    newPath.add(w);
+                    paths.put(w, newPath);
+                }
             }
         }
-        return Collections.emptyList();
+        return null;
     }
 
     /**
