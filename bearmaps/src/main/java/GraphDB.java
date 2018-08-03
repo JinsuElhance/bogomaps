@@ -214,82 +214,44 @@ public class GraphDB {
         boolean checkX = true;
         double queryX = projectToX(lon, lat);
         double queryY = projectToY(lon, lat);
-        return kdClosestHelper(queryX, queryY, checkX, theProximityMap);
+        return kdClosestHelper(null, 1E99, 1E99, queryX, queryY, checkX, theProximityMap);
     }
 
-
-    public Long kdClosestHelper(double x, double y, boolean checkX, KDTree<ProxNode> t) {
-
-        if (t.right == null && t.left == null) {
-            //Check t.item distance and see if its less than smallest.
+    public Long kdClosestHelper(Long currentBest, double currbestX, double currbestY, double queryX, double queryY, boolean checkX, KDTree<ProxNode> t) {
+        //Base Case + Check only right, check only left.
+        if (t.left == null && t.right == null) {
+            return t.item.id;
+        } else if (t.right == null && !(t.left == null)) {
+            return kdClosestHelper(currentBest, currbestX, currbestY, queryX, queryY, !checkX, t.right);
+        } else if (t.left == null && !(t.right == null)) {
+            return kdClosestHelper(currentBest, currbestX, currbestY, queryX, queryY, !checkX, t.left);
         }
 
-        if (checkX) {
-
-            if (x > t.item.x) {
-
-                if (t.right != null) {
-
-                    ProxNode nextLarger = t.right.item;
-
-                    if (euclidean(nextLarger.x, nextLarger.y, x, y) < euclidean(t.item.x, t.item.y, x, y)) {
-                        //Set smallest to NextLarger
-                        //Call kdClosestHelper(x,y,!checkX,t.right)
-                    } else {
-                        //Go through C
-                    }
-                }
-
-            } else if (x < t.item.x) {
-
-                if (x < t.item.x) {
-
-                    if (t.left != null) {
-
-                        ProxNode nextSmaller = t.left.item;
-
-                        if (euclidean(nextSmaller.x, nextSmaller.y, x, y) < euclidean(t.item.x, t.item.y, x, y)) {
-                            //Set smallest to nextSmaller
-                            //Call kdClosestHelper(x, y, !checkX, t.left)
-                        }
-                    }
-                }
-            }
-
-        } else {
-
-            if (y > t.item.y) {
-
-                if (t.right != null) {
-
-                    ProxNode nextLarger = t.right.item;
-
-                    if (euclidean(nextLarger.x, nextLarger.y, x, y) < euclidean(t.item.x, t.item.y, x, y)) {
-                        //Set smallest to NextLarger
-                        //Call kdClosestHelper(x,y,!checkX,t.right)
-                    } else {
-                        //Go through C
-                    }
-                }
-
-            } else if (y < t.item.y) {
-
-                if (y < t.item.y) {
-
-                    if (t.left != null) {
-
-                        ProxNode nextSmaller = t.left.item;
-
-                        if (euclidean(nextSmaller.x, nextSmaller.y, x, y) < euclidean(t.item.x, t.item.y, x, y)) {
-                            //Set smallest to nextSmaller
-                            //Call kdClosestHelper(x, y, !checkX, t.left)
-                        }
-                    }
-                }
-            }
-
+        if (euclidean(t.item.x, t.item.y, queryY, queryX) < euclidean(currbestX, currbestY, queryX, queryY)) {
+            currentBest = t.item.id;
         }
-        return null;
+
+        if (checkX && Math.abs(queryX - t.item.x) < euclidean(queryX, queryY, currbestX, currbestY)) {
+//            If the hypersphere crosses the plane, there could be nearer points on the other side
+//                of the plane, so the algorithm must move down the other branch of the tree from the current node looking
+//                for closer points, following the same recursive process as the entire search.
+//            If the hypersphere doesn't intersect the splitting plane, then the algorithm continues walking up the tree,
+//              and the entire branch on the other side of that node is eliminated.
+        }
+
+
+
+        if (checkX && queryX < t.item.x) {
+            //recurse on t.right with checkX = false;
+        } else if (checkX && queryX > t.item.x) {
+            //recurse on t.left with checkX = false;
+        } else if (!checkX && queryY < t.item.y) {
+            //recurse on t.right with with checkX = true;
+        } else if (!checkX && queryY > t.item.y) {
+            //recurse on t.left with with checkX = true;
+        }
+
+
     }
 
 
