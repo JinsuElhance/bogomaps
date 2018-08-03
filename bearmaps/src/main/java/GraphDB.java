@@ -1,4 +1,3 @@
-import jdk.nashorn.api.tree.BinaryTree;
 import org.xml.sax.SAXException;
 
 import java.io.File;
@@ -24,9 +23,10 @@ import java.util.Map;
  */
 public class GraphDB {
 
-    private final BinaryTree
+    private final KDTree<Long> theProximityMap = new KDTree<Long>();
     private final Map<Long, ArrayList<Edge>> edgeConnections = new HashMap<>();
     private final Map<Long, MapNode> nodes = new HashMap<>();
+    private final boolean constructed = false;
 
     /**
      * This constructor creates and starts an XML parser, cleans the nodes, and prepares the
@@ -198,6 +198,18 @@ public class GraphDB {
         return smallestId;
     }
 
+    public long kdClosest(double lon, double lat) {
+        if (!constructed) {
+            kdConstruct(nodes);
+        } else {
+            //Find the closest in the proximity map.
+        }
+        return -1;
+    }
+
+    public void kdConstruct(HashMap nodes) {
+
+    }
     /**
      * Return the Euclidean x-value for some point, p, in Berkeley. Found by computing the
      * Transverse Mercator projection centered at Berkeley.
@@ -308,6 +320,18 @@ public class GraphDB {
             } else {
                 return -1;
             }
+        }
+    }
+
+    public class ProxNode {
+        long id;
+        double x;
+        double y;
+
+        public ProxNode(long id) {
+            MapNode newNode = nodes.get(id);
+            this.x = projectToX(newNode.lon, newNode.lat);
+            this.y = projectToY(newNode.lon, newNode.lat);
         }
     }
 }
