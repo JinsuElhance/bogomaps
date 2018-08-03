@@ -1,3 +1,4 @@
+import jdk.nashorn.api.tree.BinaryTree;
 import org.xml.sax.SAXException;
 
 import java.io.File;
@@ -23,6 +24,7 @@ import java.util.Map;
  */
 public class GraphDB {
 
+    private final BinaryTree
     private final Map<Long, ArrayList<Edge>> edgeConnections = new HashMap<>();
     private final Map<Long, MapNode> nodes = new HashMap<>();
 
