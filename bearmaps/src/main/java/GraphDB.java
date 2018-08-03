@@ -23,10 +23,11 @@ import java.util.Map;
  */
 public class GraphDB {
 
-    private final KDTree<Long> theProximityMap = new KDTree<Long>();
+    private KDTree<ProxNode> theProximityMap;
     private final Map<Long, ArrayList<Edge>> edgeConnections = new HashMap<>();
     private final Map<Long, MapNode> nodes = new HashMap<>();
-    private final boolean constructed = false;
+    private boolean constructed = false;
+    private ArrayList<ProxNode> KDNodes;
 
     /**
      * This constructor creates and starts an XML parser, cleans the nodes, and prepares the
@@ -199,17 +200,122 @@ public class GraphDB {
     }
 
     public long kdClosest(double lon, double lat) {
+
+        //Constructs the kdTree
         if (!constructed) {
-            kdConstruct(nodes);
-        } else {
-            //Find the closest in the proximity map.
+            for (Long id : nodes.keySet()) {
+                KDNodes.add(new ProxNode(id));
+            }
+            theProximityMap = kdConstruct(KDNodes, true);
+            constructed = true;
         }
-        return -1;
+
+        //Indexes into the kdTree already created
+        boolean checkX = true;
+        double queryX = projectToX(lon, lat);
+        double queryY = projectToY(lon, lat);
+        return kdClosestHelper(queryX, queryY, checkX, theProximityMap);
     }
 
-    public void kdConstruct(HashMap nodes) {
 
+    public Long kdClosestHelper(double x, double y, boolean checkX, KDTree<ProxNode> t) {
+
+        if (t.right == null && t.left == null) {
+            //Check t.item distance and see if its less than smallest.
+        }
+
+        if (checkX) {
+
+            if (x > t.item.x) {
+
+                if (t.right != null) {
+
+                    ProxNode nextLarger = t.right.item;
+
+                    if (euclidean(nextLarger.x, nextLarger.y, x, y) < euclidean(t.item.x, t.item.y, x, y)) {
+                        //Set smallest to NextLarger
+                        //Call kdClosestHelper(x,y,!checkX,t.right)
+                    } else {
+                        //Go through C
+                    }
+                }
+
+            } else if (x < t.item.x) {
+
+                if (x < t.item.x) {
+
+                    if (t.left != null) {
+
+                        ProxNode nextSmaller = t.left.item;
+
+                        if (euclidean(nextSmaller.x, nextSmaller.y, x, y) < euclidean(t.item.x, t.item.y, x, y)) {
+                            //Set smallest to nextSmaller
+                            //Call kdClosestHelper(x, y, !checkX, t.left)
+                        }
+                    }
+                }
+            }
+
+        } else {
+
+            if (y > t.item.y) {
+
+                if (t.right != null) {
+
+                    ProxNode nextLarger = t.right.item;
+
+                    if (euclidean(nextLarger.x, nextLarger.y, x, y) < euclidean(t.item.x, t.item.y, x, y)) {
+                        //Set smallest to NextLarger
+                        //Call kdClosestHelper(x,y,!checkX,t.right)
+                    } else {
+                        //Go through C
+                    }
+                }
+
+            } else if (y < t.item.y) {
+
+                if (y < t.item.y) {
+
+                    if (t.left != null) {
+
+                        ProxNode nextSmaller = t.left.item;
+
+                        if (euclidean(nextSmaller.x, nextSmaller.y, x, y) < euclidean(t.item.x, t.item.y, x, y)) {
+                            //Set smallest to nextSmaller
+                            //Call kdClosestHelper(x, y, !checkX, t.left)
+                        }
+                    }
+                }
+            }
+
+        }
+        return null;
     }
+
+
+    public KDTree<ProxNode> kdConstruct(ArrayList<ProxNode> kdNodes, boolean sortByX) {
+        if (kdNodes.size() == 1) {
+            return new KDTree<ProxNode>(kdNodes.get(0));
+        } else {
+            if (sortByX) {
+                kdNodes.sort((o1, o2) -> Double.compare(o1.x, o2.x));
+            } else {
+                kdNodes.sort((o1, o2) -> Double.compare(o1.y, o2.y));
+            }
+            ProxNode median = kdNodes.get(kdNodes.size() / 2);
+            KDTree<ProxNode> toReturn = new KDTree<ProxNode>(median);
+            toReturn.left = kdConstruct(new ArrayList<ProxNode>(kdNodes.subList(0, kdNodes.size() / 2)), !sortByX);
+            if (kdNodes.size() != 2) {
+                toReturn.right = kdConstruct(new ArrayList<ProxNode>(kdNodes.subList(kdNodes.size() / 2 + 1, kdNodes.size())), !sortByX);
+            }
+            return toReturn;
+        }
+    }
+
+    static double euclidean(double x1, double x2, double y1, double y2) {
+        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    }
+
     /**
      * Return the Euclidean x-value for some point, p, in Berkeley. Found by computing the
      * Transverse Mercator projection centered at Berkeley.
