@@ -27,7 +27,7 @@
         <counts>
           <entry key="class" value="16" />
           <entry key="html" value="1" />
-          <entry key="java" value="21" />
+          <entry key="java" value="23" />
           <entry key="xml" value="6" />
         </counts>
       </usages-collector>
@@ -35,18 +35,18 @@
         <counts>
           <entry key="CLASS" value="16" />
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="21" />
+          <entry key="JAVA" value="23" />
           <entry key="XML" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="11143" />
+          <entry key="java" value="11269" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="11143" />
+          <entry key="JAVA" value="11269" />
         </counts>
       </usages-collector>
     </session>
@@ -65,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/MapNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="924">
+              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -100,12 +100,30 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="51" column="66" selection-start-line="51" selection-start-column="66" selection-end-line="51" selection-end-column="66" />
+            <state relative-caret-position="448">
+              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
               <folding>
                 <element signature="e#5754#5755#0" expanded="true" />
                 <element signature="e#5823#5824#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/TestRouterTiny.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphBuilding.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-18">
+              <caret line="65" column="47" lean-forward="true" selection-start-line="65" selection-start-column="47" selection-end-line="65" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -166,7 +184,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="1297" />
     <option name="height" value="1398" />
@@ -227,7 +245,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533266406710" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533280411454" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -243,14 +261,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestGraphBuilding">
-    <configuration name="MapServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MapServer" />
-      <module name="bearmaps" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TestRouter">
     <configuration name="TestGraphBuilding" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bearmaps" />
       <option name="PACKAGE_NAME" value="" />
@@ -267,6 +278,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestRasterer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bearmaps" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestRasterer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRouter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bearmaps" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestRouter" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestRouterTiny" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bearmaps" />
       <option name="PACKAGE_NAME" value="" />
@@ -275,23 +302,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testTwelveImages.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/bearmaps/testTwelveImages.html">
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Application.MapServer" />
       <item itemvalue="JUnit.TestGraphBuildingTiny" />
-      <item itemvalue="JavaScript Debug.testTwelveImages.html" />
       <item itemvalue="JUnit.TestGraphBuilding" />
       <item itemvalue="JUnit.TestRouterTiny" />
+      <item itemvalue="JUnit.TestRasterer" />
+      <item itemvalue="JUnit.TestRouter" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestGraphBuilding" />
+        <item itemvalue="JUnit.TestRouter" />
         <item itemvalue="JUnit.TestRouterTiny" />
+        <item itemvalue="JUnit.TestRasterer" />
         <item itemvalue="JUnit.TestGraphBuildingTiny" />
-        <item itemvalue="JavaScript Debug.testTwelveImages.html" />
-        <item itemvalue="Application.MapServer" />
+        <item itemvalue="JUnit.TestGraphBuilding" />
       </list>
     </recent_temporary>
   </component>
@@ -307,50 +331,50 @@
       <updated>1533163352424</updated>
       <workItem from="1533163355361" duration="18885000" />
       <workItem from="1533190791475" duration="13246000" />
-      <workItem from="1533260487489" duration="5908000" />
+      <workItem from="1533260487489" duration="7203000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 39m 06s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 39m 12s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 40m 54s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 46m 09s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 46m 39s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 46m 58s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestGraphBuildingTiny - 2018.08.02 at 02h 47m 36s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestGraphBuilding - 2018.08.02 at 02h 47m 57s.xml">
-      <configuration name="TestGraphBuilding" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestRouterTiny - 2018.08.02 at 18h 41m 45s.xml">
-      <configuration name="TestRouterTiny" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestGraphBuilding - 2018.08.02 at 18h 42m 05s.xml">
       <configuration name="TestGraphBuilding" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestGraphBuilding - 2018.08.03 at 00h 06m 34s.xml">
+      <configuration name="TestGraphBuilding" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.03 at 00h 07m 19s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestRasterer - 2018.08.03 at 00h 07m 25s.xml">
+      <configuration name="TestRasterer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestRouterTiny - 2018.08.03 at 00h 07m 30s.xml">
+      <configuration name="TestRouterTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestRouterTiny - 2018.08.03 at 00h 09m 45s.xml">
+      <configuration name="TestRouterTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestRouterTiny - 2018.08.03 at 00h 09m 51s.xml">
+      <configuration name="TestRouterTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestRouterTiny - 2018.08.03 at 00h 10m 22s.xml">
+      <configuration name="TestRouterTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestRouterTiny - 2018.08.03 at 00h 13m 15s.xml">
+      <configuration name="TestRouterTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestRouter - 2018.08.03 at 00h 13m 23s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38039000" />
+    <option name="totallyTimeSpent" value="39334000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="1037" height="1118" extended-state="0" />
+    <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13986014" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13986014" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -359,7 +383,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29847714" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2980866" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.42900303" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -367,7 +391,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Style Checker" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.22335026" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.22155085" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32930514" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -576,13 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/LocationParams.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -602,15 +619,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/MapNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="924">
+          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestRouterTiny.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphBuilding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18">
+          <caret line="65" column="47" lean-forward="true" selection-start-line="65" selection-start-column="47" selection-end-line="65" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="51" column="66" selection-start-line="51" selection-start-column="66" selection-end-line="51" selection-end-column="66" />
+        <state relative-caret-position="448">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
           <folding>
             <element signature="e#5754#5755#0" expanded="true" />
             <element signature="e#5823#5824#0" expanded="true" />
