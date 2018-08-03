@@ -227,12 +227,13 @@ public class GraphDB {
             return kdClosestHelper(currentBest, currbestX, currbestY, queryX, queryY, !checkX, t.left);
         }
 
+        //If the current node is closer than the current best, then it becomes the current best.
         if (euclidean(t.item.x, t.item.y, queryY, queryX) < euclidean(currbestX, currbestY, queryX, queryY)) {
             currentBest = t.item.id;
         }
 
         if (checkX && Math.abs(queryX - t.item.x) < euclidean(queryX, queryY, currbestX, currbestY)) {
-//            If the hypersphere crosses the plane, there could be nearer points on the other side
+//            If the hypersphere (wtf is this)  crosses the plane, there could be nearer points on the other side
 //                of the plane, so the algorithm must move down the other branch of the tree from the current node looking
 //                for closer points, following the same recursive process as the entire search.
 //            If the hypersphere doesn't intersect the splitting plane, then the algorithm continues walking up the tree,
