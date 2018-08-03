@@ -1,6 +1,11 @@
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.PriorityQueue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +27,36 @@ public class Router {
     public static List<Long> shortestPath(GraphDB g,
                                           double stlon, double stlat,
                                           double destlon, double destlat) {
-        // TODO
+
+        PriorityQueue<Long> fringe = new PriorityQueue<>();
+        //PriorityQueue<GraphDB.Edge> fringe = new PriorityQueue<>(Comparator.naturalOrder());
+        HashMap<Long, Double> bestDist = new HashMap<>();
+        HashMap<Long, Long> bestVertex = new HashMap<>();
+        HashSet<Long> visited = new HashSet<>();
+        ArrayList<Long> path = new ArrayList<>();
+
+        long sourceNode = g.closest(stlon, stlat);
+        fringe.add(sourceNode);
+
+        bestDist.put(sourceNode, 1E99);
+
+        while (!fringe.isEmpty()) {
+            long checkNode = fringe.poll();
+
+            if (visited.contains(checkNode)) {
+                return null;
+            }
+
+            if (g.lat(checkNode) == destlat && g.lon(checkNode) == destlon) {
+                return path;
+            }
+
+            visited.add(checkNode);
+
+            for (Long w : g.adjacent(checkNode)) {
+                if ()
+            }
+        }
         return Collections.emptyList();
     }
 
@@ -137,5 +171,20 @@ public class Router {
         public int hashCode() {
             return Objects.hash(direction, way, distance);
         }
+    }
+
+    /** Radius of the Earth in miles. */
+    private static final int R = 3963;
+
+    public static double distance(double stlon, double stlat, double destlon, double destlat) {
+        double phi1 = Math.toRadians(destlat);
+        double phi2 = Math.toRadians(stlat);
+        double dphi = Math.toRadians(stlat - destlat);
+        double dlambda = Math.toRadians(stlon - destlon);
+
+        double a = Math.sin(dphi / 2.0) * Math.sin(dphi / 2.0);
+        a += Math.cos(phi1) * Math.cos(phi2) * Math.sin(dlambda / 2.0) * Math.sin(dlambda / 2.0);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
     }
 }

@@ -1,6 +1,6 @@
 import java.util.HashSet;
 
-public class MapNode {
+public class MapNode implements Comparable<MapNode> {
 
     Long id;
     Double lon;
@@ -18,8 +18,6 @@ public class MapNode {
     public MapNode(Long id) {
         this.id = id;
     }
-
-
 
     public String getName() {
         return name;
@@ -46,5 +44,7 @@ public class MapNode {
         this.address = address;
     }
 
+    public int compareTo(MapNode other) {
 
+    }
 }

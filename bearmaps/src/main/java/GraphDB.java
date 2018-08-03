@@ -282,7 +282,7 @@ public class GraphDB {
      */
     private static final double K0 = 1.0;
 
-    public class Edge {
+    public class Edge implements Comparable<Edge>{
 
         long wayId;
         double distance;
@@ -294,6 +294,18 @@ public class GraphDB {
             this.twoEnd = twoEnd;
             this.wayId = wayId;
             this.distance = distance(oneEnd.id, twoEnd.id);
+        }
+
+        public int compareTo(Edge other) {
+            double distance1 = distance(this.oneEnd.id, this.twoEnd.id);
+            double distance2 = distance(other.oneEnd.id, other.twoEnd.id);
+            if (distance1 == distance2) {
+                return 0;
+            } else if (distance1 > distance2) {
+                return 1;
+            } else {
+                return -1;
+            }
         }
     }
 }
