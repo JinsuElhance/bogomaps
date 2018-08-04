@@ -229,17 +229,6 @@ public class GraphDB {
         if (t == null) {
             return best;
         }
-        if (t.left == null && t.right == null) {
-            return t.item;
-        } else if (t.right == null && t.left != null) {
-            toCheck = kdClosestHelper(best, queryX, queryY,
-                    queryLon, queryLat, !checkX, t.right);
-            beyonce = false;
-        } else if (t.left == null && t.right != null) {
-            toCheck = kdClosestHelper(best, queryX, queryY,
-                    queryLon, queryLat, !checkX, t.left);
-            beyonce = true;
-        }
 
         if (checkX) {
             if (queryX < t.item.x) {

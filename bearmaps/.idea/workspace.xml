@@ -4,17 +4,6 @@
     <list default="true" id="d68c7a0e-e3b1-4d13-aa84-567098c5e998" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GraphDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GraphBuildingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphBuildingHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GraphDB$Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphDB$Edge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GraphDB$ProxNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphDB$ProxNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GraphDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/KDTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/KDTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MapNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MapNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Rasterer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Rasterer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Router$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Router$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Router$NavigationDirection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Router$NavigationDirection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Router.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Router.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Way.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Way.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
-              <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+              <caret line="230" column="9" selection-start-line="230" selection-start-column="9" selection-end-line="230" selection-end-column="9" />
               <folding>
                 <element signature="e#1109#1119#0" expanded="true" />
                 <element signature="e#2934#2935#0" expanded="true" />
@@ -82,49 +71,6 @@
                 <element signature="e#14709#14710#0" expanded="true" />
                 <element signature="e#14755#14756#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-792">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../library-su18/bearmaps/berkeley-2018.osm.xml">
-          <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="822">
-              <caret line="20135" column="12" lean-forward="true" selection-start-line="20135" selection-start-column="12" selection-end-line="20135" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/berkeley-2018-small.osm.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="791">
-              <caret line="796" column="6" lean-forward="true" selection-start-line="796" selection-start-column="6" selection-end-line="796" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/berkeley-2018.osm.xml">
-          <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="-442148" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphBuilding.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="123" column="5" lean-forward="true" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -238,7 +184,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533359762233" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533360717637" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -340,9 +286,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestRouterTiny - 2018.08.03 at 00h 07m 30s.xml">
-      <configuration name="TestRouterTiny" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestRouterTiny - 2018.08.03 at 00h 09m 45s.xml">
       <configuration name="TestRouterTiny" configurationId="JUnit" />
     </history-entry>
@@ -370,15 +313,18 @@
     <history-entry file="TestGraphBuilding - 2018.08.03 at 22h 16m 06s.xml">
       <configuration name="TestGraphBuilding" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestGraphBuilding - 2018.08.03 at 22h 30m 57s.xml">
+      <configuration name="TestGraphBuilding" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48537000" />
+    <option name="totallyTimeSpent" value="49496000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.23426573" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23426573" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -387,15 +333,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.055387713" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4672709" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.42900303" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Style Checker" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.13997985" />
+      <window_info anchor="bottom" id="Style Checker" order="9" weight="0.32930514" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.33333334" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32930514" />
       <window_info anchor="bottom" id="Floobits" order="13" />
@@ -646,13 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../library-su18/bearmaps/berkeley-2018.osm.xml">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="822">
-          <caret line="20135" column="12" lean-forward="true" selection-start-line="20135" selection-start-column="12" selection-end-line="20135" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/berkeley-2018-small.osm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="791">
@@ -665,6 +604,13 @@
         <state relative-caret-position="-442148" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../library-su18/bearmaps/berkeley-2018.osm.xml">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="836">
+          <caret line="20135" column="12" lean-forward="true" selection-start-line="20135" selection-start-column="12" selection-end-line="20135" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-792">
@@ -675,7 +621,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
-          <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+          <caret line="230" column="9" selection-start-line="230" selection-start-column="9" selection-end-line="230" selection-end-column="9" />
           <folding>
             <element signature="e#1109#1119#0" expanded="true" />
             <element signature="e#2934#2935#0" expanded="true" />
