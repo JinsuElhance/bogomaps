@@ -199,7 +199,7 @@ public class GraphDB {
 //        return smallestId;
 //    }
 
-    public Long closest(double lon, double lat) {
+    public long closest(double lon, double lat) {
 
         //Constructs the kdTree
         if (!constructed) {
