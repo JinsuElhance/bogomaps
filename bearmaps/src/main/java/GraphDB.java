@@ -191,6 +191,18 @@ public class GraphDB {
         return R * c;
     }
 
+    public double distance(double longitude, double latitude, double lon2, double lat2) {
+        double phi1 = Math.toRadians(lat2);
+        double phi2 = Math.toRadians(latitude);
+        double dphi = Math.toRadians(latitude - lat2);
+        double dlambda = Math.toRadians(longitude - lon2);
+
+        double a = Math.sin(dphi / 2.0) * Math.sin(dphi / 2.0);
+        a += Math.cos(phi1) * Math.cos(phi2) * Math.sin(dlambda / 2.0) * Math.sin(dlambda / 2.0);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+
     /**
      * Returns the ID of the vertex closest to the given longitude and latitude.
      *
@@ -198,18 +210,6 @@ public class GraphDB {
      * @param lat The given latitude.
      * @return The ID for the vertex closest to the <code>lon</code> and <code>lat</code>.
      */
-//    public long closest(double lon, double lat) {
-//        double smallestDist = 1E99;
-//        long smallestId = -1;
-//        for (long checkId : nodes.keySet()) {
-//            double currDist = distance(lon, lat, checkId);
-//            if (currDist < smallestDist) {
-//                smallestDist = currDist;
-//                smallestId = checkId;
-//            }
-//        }
-//        return smallestId;
-//    }
     public long closest(double lon, double lat) {
 
         //Indexes into the kdTree already created
@@ -234,7 +234,7 @@ public class GraphDB {
         if (checkX) {
             if (queryX < t.item.x) {
                 if (t.left != null) {
-                    betterCheck = (kdClosestHelper(queryX, queryY, queryLon, queryLat, !checkX, t.left));
+                    betterCheck = kdClosestHelper(queryX, queryY, queryLon, queryLat, !checkX, t.left);
                 } else {
                     betterCheck = t.item;
                 }
@@ -291,13 +291,9 @@ public class GraphDB {
         }
     }
 
-
-
-
-
     public KDTree<ProxNode> kdConstruct(ArrayList<ProxNode> proxNodes, boolean sortByX) {
         if (proxNodes.size() == 1) {
-            return new KDTree<ProxNode>(proxNodes.get(0));
+            return new KDTree<>(proxNodes.get(0));
         } else {
             if (sortByX) {
                 proxNodes.sort((o1, o2) -> Double.compare(o1.x, o2.x));
@@ -305,28 +301,25 @@ public class GraphDB {
                 proxNodes.sort((o1, o2) -> Double.compare(o1.y, o2.y));
             }
             ProxNode median = proxNodes.get(proxNodes.size() / 2);
-            KDTree<ProxNode> toReturn = new KDTree<ProxNode>(median);
-            toReturn.left = kdConstruct(new ArrayList<ProxNode>(proxNodes.subList(0,
+            KDTree<ProxNode> toReturn = new KDTree<>(median);
+            toReturn.left = kdConstruct(new ArrayList<>(proxNodes.subList(0,
                     proxNodes.size() / 2)), !sortByX);
             if (proxNodes.size() != 2) {
-                toReturn.right = kdConstruct(new ArrayList<ProxNode>(proxNodes.subList(
+                toReturn.right = kdConstruct(new ArrayList<>(proxNodes.subList(
                         proxNodes.size() / 2 + 1, proxNodes.size())), !sortByX);
             }
             return toReturn;
         }
     }
 
-    static double euclidean(double x1, double x2, double y1, double y2) {
-        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-    }
-
     public ProxNode shortestDist(ProxNode node1, ProxNode node2, double destLon, double destLat) {
-        if (distance(destLon, destLat, node1.id) < distance(destLon, destLat, node2.id)) {
+        if (distance(destLon, destLat, node1.lon, node1.lat) < distance(destLon, destLat, node2.lon, node2.lat)) {
             return node1;
         } else {
             return node2;
         }
     }
+
     /**
      * Return the Euclidean x-value for some point, p, in Berkeley. Found by computing the
      * Transverse Mercator projection centered at Berkeley.
@@ -455,13 +448,17 @@ public class GraphDB {
     public class ProxNode {
         long id;
         double x;
+        double lon;
         double y;
+        double lat;
 
         public ProxNode(long id) {
             MapNode newNode = nodes.get(id);
             this.id = id;
             this.x = projectToX(newNode.lon, newNode.lat);
             this.y = projectToY(newNode.lon, newNode.lat);
+            this.lon = nodes.get(id).lon;
+            this.lat = nodes.get(id).lat;
         }
     }
 }
