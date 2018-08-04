@@ -26,7 +26,6 @@ public class GraphDB {
     private KDTree<ProxNode> theProximityMap;
     private final Map<Long, ArrayList<Edge>> edgeConnections = new HashMap<>();
     private final Map<Long, MapNode> nodes = new HashMap<>();
-    private boolean constructed = false;
     private ArrayList<ProxNode> kdNodes = new ArrayList<ProxNode>();
 
     /**
@@ -45,6 +44,10 @@ public class GraphDB {
             e.printStackTrace();
         }
         clean();
+        for (long id : nodes.keySet()) {
+            kdNodes.add(new ProxNode(id));
+        }
+        theProximityMap = kdConstruct(kdNodes, true);
     }
 
     public void add(MapNode toPlace) {
@@ -209,15 +212,6 @@ public class GraphDB {
 //    }
     public long closest(double lon, double lat) {
 
-        //Constructs the kdTree
-        if (!constructed) {
-            for (long id : nodes.keySet()) {
-                kdNodes.add(new ProxNode(id));
-            }
-            theProximityMap = kdConstruct(kdNodes, true);
-            constructed = true;
-        }
-
         //Indexes into the kdTree already created
         boolean checkX = true;
         double queryX = projectToX(lon, lat);
@@ -229,8 +223,8 @@ public class GraphDB {
     public ProxNode kdClosestHelper(ProxNode best, double queryX, double queryY,
                                     double queryLon, double queryLat,
                                     boolean checkX, KDTree<ProxNode> t) {
-        ProxNode toCheck = null;
-        boolean beyonce = false;
+        ProxNode toCheck;
+        boolean beyonce;
         //Base Case + Check only right, check only left.
         if (t == null) {
             return best;
@@ -255,7 +249,6 @@ public class GraphDB {
             } else {
                 toCheck = kdClosestHelper(best, queryX, queryY,
                         queryLon, queryLat, !checkX, t.right);
-
                 beyonce = true;
             }
         } else {
