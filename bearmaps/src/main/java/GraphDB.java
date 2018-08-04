@@ -27,6 +27,7 @@ public class GraphDB {
     private final Map<Long, ArrayList<Edge>> edgeConnections = new HashMap<>();
     private final Map<Long, MapNode> nodes = new HashMap<>();
     private ArrayList<ProxNode> kdNodes = new ArrayList<ProxNode>();
+    private int visitedCount = 0;
 
     /**
      * This constructor creates and starts an XML parser, cleans the nodes, and prepares the
@@ -211,13 +212,10 @@ public class GraphDB {
      * @return The ID for the vertex closest to the <code>lon</code> and <code>lat</code>.
      */
     public long closest(double lon, double lat) {
-
-        //Indexes into the kdTree already created
-        boolean checkX = true;
         double queryX = projectToX(lon, lat);
         double queryY = projectToY(lon, lat);
         return kdClosestHelper(queryX, queryY,
-                lon, lat, checkX, theProximityMap).id;
+                lon, lat, true, theProximityMap).id;
     }
 
     public ProxNode kdClosestHelper(double queryX, double queryY,
@@ -230,63 +228,72 @@ public class GraphDB {
             return t.item;
         }
 
-
         if (checkX) {
             if (queryX < t.item.x) {
                 if (t.left != null) {
-                    betterCheck = kdClosestHelper(queryX, queryY, queryLon, queryLat, !checkX, t.left);
+                    betterCheck = kdClosestHelper(queryX, queryY,
+                            queryLon, queryLat, !checkX, t.left);
                 } else {
                     betterCheck = t.item;
                 }
-                if (t.right != null && Math.abs(queryX - t.item.x) < distance(queryLon, queryLat, betterCheck.id)) {
+                if (t.right != null && Math.abs(queryX - t.item.x)
+                        < euclidean(queryX, betterCheck.x, queryY, betterCheck.y)) {
                     betterCheck = shortestDist(
                             betterCheck,
-                            kdClosestHelper(queryX, queryY, queryLon, queryLat, !checkX, t.right),
-                            queryLon, queryLat);
+                            kdClosestHelper(queryX, queryY,
+                                    queryLon, queryLat, !checkX, t.right),
+                            queryX, queryY);
                 }
-                return shortestDist(t.item, betterCheck, queryLon, queryLat);
+                return shortestDist(t.item, betterCheck, queryX, queryY);
             } else {
                 if (t.right != null) {
-                    betterCheck = kdClosestHelper(queryX, queryY, queryLon, queryLat, !checkX, t.right);
+                    betterCheck = kdClosestHelper(queryX, queryY,
+                            queryLon, queryLat, !checkX, t.right);
                 } else {
                     betterCheck = t.item;
                 }
-                if (t.left != null && Math.abs(queryX - t.item.x) < distance(queryLon, queryLat, betterCheck.id)) {
+                if (t.left != null && Math.abs(queryX - t.item.x)
+                        < euclidean(queryX, betterCheck.x, queryY, betterCheck.y)) {
                     betterCheck = shortestDist(
                             betterCheck,
-                            kdClosestHelper(queryX, queryY, queryLon, queryLat, !checkX, t.left),
-                            queryLon, queryLat);
+                            kdClosestHelper(queryX, queryY,
+                                    queryLon, queryLat, !checkX, t.left),
+                            queryX, queryY);
                 }
-                return shortestDist(t.item, betterCheck, queryLon, queryLat);
+                return shortestDist(t.item, betterCheck, queryX, queryY);
             }
 
         } else {
             if (queryY < t.item.y) {
                 if (t.left != null) {
-                    betterCheck = (kdClosestHelper(queryX, queryY, queryLon, queryLat, !checkX, t.left));
+                    betterCheck = (kdClosestHelper(queryX, queryY,
+                            queryLon, queryLat, !checkX, t.left));
                 } else {
                     betterCheck = t.item;
                 }
-                if (t.right != null && Math.abs(queryY - t.item.y) < distance(queryLon, queryLat, betterCheck.id)) {
+                if (t.right != null && Math.abs(queryY - t.item.y)
+                        < euclidean(queryX, betterCheck.x, queryY, betterCheck.y)) {
                     betterCheck = shortestDist(
                             betterCheck,
                             kdClosestHelper(queryX, queryY, queryLon, queryLat, !checkX, t.right),
-                            queryLon, queryLat);
+                            queryX, queryY);
                 }
-                return shortestDist(t.item, betterCheck, queryLon, queryLat);
+                return shortestDist(t.item, betterCheck, queryX, queryY);
             } else {
                 if (t.right != null) {
-                    betterCheck = kdClosestHelper(queryX, queryY, queryLon, queryLat, !checkX, t.right);
+                    betterCheck = kdClosestHelper(queryX, queryY,
+                            queryLon, queryLat, !checkX, t.right);
                 } else {
                     betterCheck = t.item;
                 }
-                if (t.left != null && Math.abs(queryY - t.item.y) < distance(queryLon, queryLat, betterCheck.id)) {
+                if (t.left != null && Math.abs(queryY - t.item.y)
+                        < euclidean(queryX, betterCheck.x, queryY, betterCheck.y)) {
                     betterCheck = shortestDist(
                             betterCheck,
                             kdClosestHelper(queryX, queryY, queryLon, queryLat, !checkX, t.left),
-                            queryLon, queryLat);
+                            queryX, queryY);
                 }
-                return shortestDist(t.item, betterCheck, queryLon, queryLat);
+                return shortestDist(t.item, betterCheck, queryX, queryY);
             }
         }
     }
@@ -312,8 +319,12 @@ public class GraphDB {
         }
     }
 
-    public ProxNode shortestDist(ProxNode node1, ProxNode node2, double destLon, double destLat) {
-        if (distance(destLon, destLat, node1.lon, node1.lat) < distance(destLon, destLat, node2.lon, node2.lat)) {
+    static double euclidean(double x1, double x2, double y1, double y2) {
+        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    }
+
+    public ProxNode shortestDist(ProxNode node1, ProxNode node2, double destX, double destY) {
+        if (euclidean(node1.x, destX, node1.y, destY) < euclidean(node2.x, destX, node2.y, destY)) {
             return node1;
         } else {
             return node2;
