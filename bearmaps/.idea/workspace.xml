@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d68c7a0e-e3b1-4d13-aa84-567098c5e998" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/GraphDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphDB.java" afterDir="false" />
-    </list>
+    <list default="true" id="d68c7a0e-e3b1-4d13-aa84-567098c5e998" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,8 +54,8 @@
       <file leaf-file-name="GraphDB.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5">
-              <caret line="193" column="36" selection-start-line="193" selection-start-column="36" selection-end-line="193" selection-end-column="36" />
+            <state relative-caret-position="104">
+              <caret line="214" column="45" selection-start-line="214" selection-start-column="45" selection-end-line="214" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2880#2881#0" expanded="true" />
@@ -221,7 +219,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestRouter">
+  <component name="RunManager" selected="JUnit.TestGraphBuildingTiny">
     <configuration name="TestGraphBuilding" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bearmaps" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -316,10 +314,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestGraphBuildingTiny" />
         <item itemvalue="JUnit.TestRouter" />
         <item itemvalue="JUnit.TestRouterTiny" />
         <item itemvalue="JUnit.TestRasterer" />
-        <item itemvalue="JUnit.TestGraphBuildingTiny" />
         <item itemvalue="JUnit.TestGraphBuilding" />
       </list>
     </recent_temporary>
@@ -342,12 +340,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestGraphBuilding - 2018.08.02 at 18h 42m 05s.xml">
-      <configuration name="TestGraphBuilding" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestGraphBuilding - 2018.08.03 at 00h 06m 34s.xml">
-      <configuration name="TestGraphBuilding" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestGraphBuildingTiny - 2018.08.03 at 00h 07m 19s.xml">
       <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
     </history-entry>
@@ -372,30 +364,35 @@
     <history-entry file="TestRouter - 2018.08.03 at 00h 13m 23s.xml">
       <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.03 at 19h 54m 50s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestGraphBuildingTiny - 2018.08.03 at 19h 57m 49s.xml">
+      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="47898000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="12" visible="true" weight="0.14871795" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.14871795" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.0" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.63846153" />
       <window_info anchor="bottom" id="Floobits" />
       <window_info anchor="bottom" id="Style Checker" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.06545821" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3297568" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25107297" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -798,8 +795,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="193" column="36" selection-start-line="193" selection-start-column="36" selection-end-line="193" selection-end-column="36" />
+        <state relative-caret-position="104">
+          <caret line="214" column="45" selection-start-line="214" selection-start-column="45" selection-end-line="214" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2880#2881#0" expanded="true" />
