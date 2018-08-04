@@ -1,7 +1,3 @@
-import com.sun.source.tree.BinaryTree;
-import jdk.nashorn.api.tree.ExpressionTree;
-import jdk.nashorn.api.tree.TreeVisitor;
-
 public class KDTree<T> {
 
     T item;

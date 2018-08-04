@@ -1,6 +1,3 @@
-import java.util.HashSet;
-import java.util.Map;
-
 /**
  * This class provides all code necessary to take a query box and produce
  * a query result. The getMapRaster method must return a Map containing all
@@ -71,10 +68,10 @@ public class Rasterer {
         int startY = (int) Math.floor((MapServer.ROOT_ULLAT - queryUllat) / tileLat);
         int endY = (int) Math.ceil((MapServer.ROOT_ULLAT -  queryLrlat) / tileLat);
 
-        double RasterUllon = MapServer.ROOT_ULLON + (tileLon * startX);
-        double RasterLrlon = MapServer.ROOT_ULLON + (tileLon * endX);
-        double RasterUllat = MapServer.ROOT_ULLAT - (tileLat * startY);
-        double RasterLrlat = MapServer.ROOT_ULLAT - (tileLat * endY);
+        double rasterUllon = MapServer.ROOT_ULLON + (tileLon * startX);
+        double rasterLrlon = MapServer.ROOT_ULLON + (tileLon * endX);
+        double rasterUllat = MapServer.ROOT_ULLAT - (tileLat * startY);
+        double rasterLrlat = MapServer.ROOT_ULLAT - (tileLat * endY);
 
         String[][] result = new String[(endY - startY)][(endX - startX)];
 
@@ -83,17 +80,18 @@ public class Rasterer {
         } else {
             for (int currY = startY; currY < endY; currY++) {
                 for (int currX = startX; currX < endX; currX++) {
-                    result[currY - startY][currX - startX] = "d" + depth + "_x" + currX + "_y" + currY + ".png";
+                    result[currY - startY][currX - startX] = "d" + depth + "_x"
+                            + currX + "_y" + currY + ".png";
                 }
             }
         }
 
         RasterResultParams.Builder toReturn = new RasterResultParams.Builder();
         toReturn = toReturn.setDepth(depth);
-        toReturn = toReturn.setRasterLrLat(RasterLrlat);
-        toReturn = toReturn.setRasterLrLon(RasterLrlon);
-        toReturn = toReturn.setRasterUlLon(RasterUllon);
-        toReturn = toReturn.setRasterUlLat(RasterUllat);
+        toReturn = toReturn.setRasterLrLat(rasterLrlat);
+        toReturn = toReturn.setRasterLrLon(rasterLrlon);
+        toReturn = toReturn.setRasterUlLon(rasterUllon);
+        toReturn = toReturn.setRasterUlLat(rasterUllat);
         toReturn = toReturn.setRenderGrid(result);
         toReturn = toReturn.setQuerySuccess(true);
 

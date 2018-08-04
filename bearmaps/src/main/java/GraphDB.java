@@ -27,11 +27,12 @@ public class GraphDB {
     private final Map<Long, ArrayList<Edge>> edgeConnections = new HashMap<>();
     private final Map<Long, MapNode> nodes = new HashMap<>();
     private boolean constructed = false;
-    private ArrayList<ProxNode> KDNodes;
+    private ArrayList<ProxNode> kdNodes = new ArrayList<ProxNode>();
 
     /**
      * This constructor creates and starts an XML parser, cleans the nodes, and prepares the
      * data structures for processing. Modify this constructor to initialize your data structures.
+     *
      * @param dbPath Path to the XML file to be parsed.
      */
     public GraphDB(String dbPath) {
@@ -73,12 +74,14 @@ public class GraphDB {
 
     /**
      * Helper to process strings into their "cleaned" form, ignoring punctuation and capitalization.
+     *
      * @param s Input string.
      * @return Cleaned string.
      */
     private static String cleanString(String s) {
         return s.replaceAll("[^a-zA-Z ]", "").toLowerCase();
     }
+
     /**
      * Remove nodes with no connections from the graph.
      * While this does not guarantee that any two nodes in the remaining graph are connected,
@@ -97,6 +100,7 @@ public class GraphDB {
 
     /**
      * Returns the longitude of vertex <code>v</code>.
+     *
      * @param v The ID of a vertex in the graph.
      * @return The longitude of that vertex, or 0.0 if the vertex is not in the graph.
      */
@@ -109,6 +113,7 @@ public class GraphDB {
 
     /**
      * Returns the latitude of vertex <code>v</code>.
+     *
      * @param v The ID of a vertex in the graph.
      * @return The latitude of that vertex, or 0.0 if the vertex is not in the graph.
      */
@@ -121,6 +126,7 @@ public class GraphDB {
 
     /**
      * Returns an iterable of all vertex IDs in the graph.
+     *
      * @return An iterable of all vertex IDs in the graph.
      */
     Iterable<Long> vertices() {
@@ -129,6 +135,7 @@ public class GraphDB {
 
     /**
      * Returns an iterable over the IDs of all vertices adjacent to <code>v</code>.
+     *
      * @param v The ID for any vertex in the graph.
      * @return An iterable over the IDs of all vertices adjacent to <code>v</code>, or an empty
      * iterable if the vertex is not in the graph.
@@ -151,6 +158,7 @@ public class GraphDB {
     /**
      * Returns the great-circle distance between two vertices, v and w, in miles.
      * Assumes the lon/lat methods are implemented properly.
+     *
      * @param v The ID for the first vertex.
      * @param w The ID for the second vertex.
      * @return The great-circle distance between vertices and w.
@@ -182,6 +190,7 @@ public class GraphDB {
 
     /**
      * Returns the ID of the vertex closest to the given longitude and latitude.
+     *
      * @param lon The given longitude.
      * @param lat The given latitude.
      * @return The ID for the vertex closest to the <code>lon</code> and <code>lat</code>.
@@ -198,15 +207,14 @@ public class GraphDB {
 //        }
 //        return smallestId;
 //    }
-
     public long closest(double lon, double lat) {
 
         //Constructs the kdTree
         if (!constructed) {
-            for (Long id : nodes.keySet()) {
-                KDNodes.add(new ProxNode(id));
+            for (long id : nodes.keySet()) {
+                kdNodes.add(new ProxNode(id));
             }
-            theProximityMap = kdConstruct(KDNodes, true);
+            theProximityMap = kdConstruct(kdNodes, true);
             constructed = true;
         }
 
@@ -214,79 +222,110 @@ public class GraphDB {
         boolean checkX = true;
         double queryX = projectToX(lon, lat);
         double queryY = projectToY(lon, lat);
-        return kdClosestHelper(theProximityMap.item, queryX, queryY, checkX, theProximityMap).id;
+        return kdClosestHelper(theProximityMap.item, queryX, queryY,
+                lon, lat, checkX, theProximityMap).id;
     }
 
-    public ProxNode kdClosestHelper(ProxNode best, double queryX, double queryY, boolean checkX, KDTree<ProxNode> t) {
-        ProxNode toCheck;
+    public ProxNode kdClosestHelper(ProxNode best, double queryX, double queryY,
+                                    double queryLon, double queryLat,
+                                    boolean checkX, KDTree<ProxNode> t) {
+        ProxNode toCheck = null;
+        boolean beyonce = false;
         //Base Case + Check only right, check only left.
+        if (t == null) {
+            return best;
+        }
         if (t.left == null && t.right == null) {
             return t.item;
+        } else if (t.right == null && t.left != null) {
+            toCheck = kdClosestHelper(best, queryX, queryY,
+                    queryLon, queryLat, !checkX, t.right);
+            beyonce = false;
+        } else if (t.left == null && t.right != null) {
+            toCheck = kdClosestHelper(best, queryX, queryY,
+                    queryLon, queryLat, !checkX, t.left);
+            beyonce = true;
         }
 
-        else if (t.right == null && !(t.left == null)) {
-            return kdClosestHelper(best, queryX, queryY, !checkX, t.right);
-        } else if (t.left == null && !(t.right == null)) {
-            return kdClosestHelper(best, queryX, queryY, !checkX, t.left);
-        }
-
-        //If the current node is closer than the current best, then it becomes the current best.
-        if (euclidean(t.item.x, t.item.y, queryY, queryX) < euclidean(best.x, best.y, queryX, queryY)) {
-            best = t.item;
-        }
-
-        //Axis check for X
-        if (checkX && Math.abs(queryX - t.item.x) < euclidean(queryX, queryY, best.x, best.y)) {
-            //Check other side
-            if (best.x > t.item.x) {
-                best = kdClosestHelper(best, queryX, queryY, !checkX, t.left);
+        if (checkX) {
+            if (queryX < t.item.x) {
+                toCheck = kdClosestHelper(best, queryX, queryY,
+                        queryLon, queryLat, !checkX, t.left);
+                beyonce = false;
             } else {
-                best = kdClosestHelper(best, queryX, queryY, !checkX, t.right);
+                toCheck = kdClosestHelper(best, queryX, queryY,
+                        queryLon, queryLat, !checkX, t.right);
+
+                beyonce = true;
+            }
+        } else {
+            if (queryY < t.item.y) {
+                toCheck = kdClosestHelper(best, queryX, queryY,
+                        queryLon, queryLat, !checkX, t.left);
+                beyonce = false;
+            } else {
+                toCheck = kdClosestHelper(best, queryX, queryY,
+                        queryLon, queryLat, !checkX, t.right);
+                beyonce = true;
+            }
+        }
+        //If the current node is closer than the current best, then it becomes the current best.
+        if (distance(queryLon, queryLat, t.item.id) < distance(queryLon, queryLat, toCheck.id)) {
+            best = t.item;
+        } else {
+            best = toCheck;
+        }
+        //Axis check for X
+        if (checkX && Math.abs(queryX - t.item.x) < distance(queryLon, queryLat, best.id)) {
+            //Check other side
+            if (beyonce) {
+                toCheck = kdClosestHelper(best, queryX, queryY,
+                        queryLon, queryLat, !checkX, t.left);
+            } else {
+                toCheck = kdClosestHelper(best, queryX, queryY,
+                        queryLon, queryLat, !checkX, t.right);
             }
             //Eliminating other side
-        } else if (Math.abs(queryX - t.item.y) > euclidean(queryX, queryY, best.x, best.y)) {
+        } else if (Math.abs(queryX - t.item.y) > distance(queryLon, queryLat, best.id)) {
             return best;
         }
-
         //Axis check for Y
-        if (!checkX && Math.abs(queryY - t.item.y) < euclidean(queryX, queryY, best.x, best.y)) {
-            if (best.y > t.item.y) {
-                best = kdClosestHelper(best, queryX, queryY, !checkX, t.left);
+        if (!checkX && Math.abs(queryY - t.item.y) < distance(queryLon, queryLat, best.id)) {
+            if (beyonce) {
+                toCheck = kdClosestHelper(best, queryX, queryY,
+                        queryLon, queryLat, !checkX, t.left);
             } else {
-                best = kdClosestHelper(best, queryX, queryY, !checkX, t.right);
+                toCheck = kdClosestHelper(best, queryX, queryY,
+                        queryLon, queryLat, !checkX, t.right);
             }
-        } else if (Math.abs(queryY - t.item.y) > euclidean(queryX, queryY, best.x, best.y)) {
+        } else if (Math.abs(queryX - t.item.y) > distance(queryLon, queryLat, best.id)) {
             return best;
+        }
+        if (toCheck != null && distance(queryLon, queryLat, toCheck.id)
+                < distance(queryLon, queryLat, best.id)) {
+            best = toCheck;
         }
 
         return best;
-//
-//        if (checkX && queryX < t.item.x) {
-//            //recurse on t.right with checkX = false;
-//        } else if (checkX && queryX > t.item.x) {
-//            //recurse on t.left with checkX = false;
-//        } else if (!checkX && queryY < t.item.y) {
-//            //recurse on t.right with with checkX = true;
-//        } else if (!checkX && queryY > t.item.y) {
-//            //recurse on t.left with with checkX = true;
-//        }
     }
 
 
-    public KDTree<ProxNode> kdConstruct(ArrayList<ProxNode> kdNodes, boolean sortByX) {
-        if (kdNodes.size() == 1) {
-            return new KDTree<ProxNode>(kdNodes.get(0));
+    public KDTree<ProxNode> kdConstruct(ArrayList<ProxNode> proxNodes, boolean sortByX) {
+        if (proxNodes.size() == 1) {
+            return new KDTree<ProxNode>(proxNodes.get(0));
         } else {
             if (sortByX) {
-                kdNodes.sort((o1, o2) -> Double.compare(o1.x, o2.x));
+                proxNodes.sort((o1, o2) -> Double.compare(o1.x, o2.x));
             } else {
-                kdNodes.sort((o1, o2) -> Double.compare(o1.y, o2.y));
+                proxNodes.sort((o1, o2) -> Double.compare(o1.y, o2.y));
             }
-            ProxNode median = kdNodes.get(kdNodes.size() / 2);
+            ProxNode median = proxNodes.get(proxNodes.size() / 2);
             KDTree<ProxNode> toReturn = new KDTree<ProxNode>(median);
-            toReturn.left = kdConstruct(new ArrayList<ProxNode>(kdNodes.subList(0, kdNodes.size() / 2)), !sortByX);
-            if (kdNodes.size() != 2) {
-                toReturn.right = kdConstruct(new ArrayList<ProxNode>(kdNodes.subList(kdNodes.size() / 2 + 1, kdNodes.size())), !sortByX);
+            toReturn.left = kdConstruct(new ArrayList<ProxNode>(proxNodes.subList(0,
+                    proxNodes.size() / 2)), !sortByX);
+            if (proxNodes.size() != 2) {
+                toReturn.right = kdConstruct(new ArrayList<ProxNode>(proxNodes.subList(
+                        proxNodes.size() / 2 + 1, proxNodes.size())), !sortByX);
             }
             return toReturn;
         }
@@ -299,6 +338,7 @@ public class GraphDB {
     /**
      * Return the Euclidean x-value for some point, p, in Berkeley. Found by computing the
      * Transverse Mercator projection centered at Berkeley.
+     *
      * @param lon The longitude for p.
      * @param lat The latitude for p.
      * @return The flattened, Euclidean x-value for p.
@@ -314,6 +354,7 @@ public class GraphDB {
     /**
      * Return the Euclidean y-value for some point, p, in Berkeley. Found by computing the
      * Transverse Mercator projection centered at Berkeley.
+     *
      * @param lon The longitude for p.
      * @param lat The latitude for p.
      * @return The flattened, Euclidean y-value for p.
@@ -328,6 +369,7 @@ public class GraphDB {
 
     /**
      * In linear time, collect all the names of OSM locations that prefix-match the query string.
+     *
      * @param prefix Prefix string to be searched for. Could be any case, with our without
      *               punctuation.
      * @return A <code>List</code> of the full names of locations whose cleaned name matches the
@@ -340,6 +382,7 @@ public class GraphDB {
     /**
      * Collect all locations that match a cleaned <code>locationName</code>, and return
      * information about each node that matches.
+     *
      * @param locationName A full name of a location searched for.
      * @return A <code>List</code> of <code>LocationParams</code> whose cleaned name matches the
      * cleaned <code>locationName</code>
@@ -353,6 +396,7 @@ public class GraphDB {
      * The initial bearing is the angle that, if followed in a straight line along a great-circle
      * arc from the starting point, would take you to the end point.
      * Assumes the lon/lat methods are implemented properly.
+     *
      * @param v The ID for the first vertex.
      * @param w The ID for the second vertex.
      * @return The bearing between <code>v</code> and <code>w</code> in degrees.
@@ -370,19 +414,26 @@ public class GraphDB {
         return Math.toDegrees(Math.atan2(y, x));
     }
 
-    /** Radius of the Earth in miles. */
+    /**
+     * Radius of the Earth in miles.
+     */
     private static final int R = 3963;
-    /** Latitude centered on Berkeley. */
+    /**
+     * Latitude centered on Berkeley.
+     */
     private static final double ROOT_LAT = (MapServer.ROOT_ULLAT + MapServer.ROOT_LRLAT) / 2;
-    /** Longitude centered on Berkeley. */
+    /**
+     * Longitude centered on Berkeley.
+     */
     private static final double ROOT_LON = (MapServer.ROOT_ULLON + MapServer.ROOT_LRLON) / 2;
     /**
      * Scale factor at the natural origin, Berkeley. Prefer to use 1 instead of 0.9996 as in UTM.
+     *
      * @source https://gis.stackexchange.com/a/7298
      */
     private static final double K0 = 1.0;
 
-    public class Edge implements Comparable<Edge>{
+    public class Edge implements Comparable<Edge> {
 
         long wayId;
         double distance;
@@ -416,6 +467,7 @@ public class GraphDB {
 
         public ProxNode(long id) {
             MapNode newNode = nodes.get(id);
+            this.id = id;
             this.x = projectToX(newNode.lon, newNode.lat);
             this.y = projectToY(newNode.lon, newNode.lat);
         }

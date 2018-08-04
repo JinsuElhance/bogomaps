@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -26,7 +25,8 @@ public class Router {
      * @return The <code>List</code> of vertex IDs corresponding to the shortest path.
      */
 
-    //Compare nodes in the fringe using a comparator that pulls the distance between two nodes from the bestDist hashMap
+    //Compare nodes in the fringe using a comparator that pulls the
+    //distance between two nodes from the bestDist hashMap
     public static List<Long> shortestPath(GraphDB g,
                                    double stlon, double stlat,
                                    double destlon, double destlat) {
@@ -39,16 +39,18 @@ public class Router {
 
         long sourceNode = g.closest(stlon, stlat);
         long destNode = g.closest(destlon, destlat);
-        PriorityQueue<Long> fringe = new PriorityQueue<>((o1, o2) -> Double.compare((bestDist.get(o1) + g.distance(o1, sourceNode)), bestDist.get(o2) + g.distance(o2, sourceNode)));
+        PriorityQueue<Long> fringe = new PriorityQueue<>((o1, o2)
+            -> Double.compare((bestDist.get(o1)
+                + g.distance(o1, sourceNode)), bestDist.get(o2) + g.distance(o2, sourceNode)));
 
         fringe.add(sourceNode);
         visited.add(sourceNode);
 
         for (Long vertex : g.vertices()) {
             bestDist.put(vertex, 1E99);
-            paths.put(vertex, new ArrayList<Long>() {{
-                add(sourceNode);
-            }});
+            paths.put(vertex, new ArrayList<Long>() {
+                { add(sourceNode); }
+            });
         }
 
         bestDist.put(sourceNode, 0.0);
