@@ -123,6 +123,7 @@ public class TestGraphBuilding {
                 + "actual value is 1790732915", 53042711L, graph.closest(lon, lat));
     }
 
+
     @Test
     public void testClosestSmall() {
         double lon = -122.25207;

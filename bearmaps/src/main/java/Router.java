@@ -33,9 +33,7 @@ public class Router {
 
         HashMap<Long, Double> bestDist = new HashMap<>();
         HashSet<Long> visited = new HashSet<>();
-        HashMap<Long, ArrayList<Long>> paths = new HashMap<>();
-
-
+        HashMap<Long, Long> paths = new HashMap<>();
 
         long sourceNode = g.closest(stlon, stlat);
         long destNode = g.closest(destlon, destlat);
@@ -45,16 +43,8 @@ public class Router {
 
         fringe.add(sourceNode);
         visited.add(sourceNode);
-
-        for (Long vertex : g.vertices()) {
-            bestDist.put(vertex, 1E99);
-            paths.put(vertex, new ArrayList<Long>() {
-                { add(sourceNode); }
-            });
-        }
-
+        paths.put(sourceNode, sourceNode);
         bestDist.put(sourceNode, 0.0);
-
 
         while (!fringe.isEmpty()) {
 
@@ -65,22 +55,40 @@ public class Router {
             }
 
             if (checkNode.equals(destNode)) {
-                return paths.get(checkNode);
+                break;
             }
 
             visited.add(checkNode);
 
             for (Long w : g.adjacent(checkNode)) {
+
+                if (!bestDist.containsKey(w)) {
+                    bestDist.put(w, 1E99);
+                }
+
                 if (bestDist.get(checkNode) + g.distance(checkNode, w) < bestDist.get(w)) {
+
                     bestDist.put(w, bestDist.get(checkNode) + g.distance(checkNode, w));
+                    fringe.remove(w);
                     fringe.add(w);
-                    ArrayList<Long> newPath = new ArrayList<>(paths.get(checkNode));
-                    newPath.add(w);
-                    paths.put(w, newPath);
+
+                    paths.put(w, checkNode);
                 }
             }
         }
-        return null;
+        return pathFinder(paths, sourceNode, destNode);
+    }
+
+    public static List<Long> pathFinder(HashMap paths, Long sourceNode, Long finalNode) {
+        Long current = (Long) paths.get(finalNode);
+        ArrayList<Long> result = new ArrayList<>();
+        result.add(0, finalNode);
+        while (!current.equals(sourceNode)) {
+            result.add(0, current);
+            current = (Long) paths.get(current);
+        }
+        result.add(0, sourceNode);
+        return result;
     }
 
     /**

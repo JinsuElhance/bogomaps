@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d68c7a0e-e3b1-4d13-aa84-567098c5e998" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GraphDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Router.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestGraphBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestGraphBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestRouter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Router$1.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +33,7 @@
         <counts>
           <entry key="class" value="16" />
           <entry key="html" value="1" />
-          <entry key="java" value="39" />
+          <entry key="java" value="43" />
           <entry key="xml" value="9" />
         </counts>
       </usages-collector>
@@ -38,41 +41,29 @@
         <counts>
           <entry key="CLASS" value="16" />
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="39" />
+          <entry key="JAVA" value="43" />
           <entry key="XML" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="17177" />
+          <entry key="java" value="18251" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="17177" />
+          <entry key="JAVA" value="18251" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/TestRouter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="289" column="26" selection-start-line="289" selection-start-column="26" selection-end-line="289" selection-end-column="26" />
-              <folding>
-                <element signature="e#1068#1078#0" expanded="true" />
-                <element signature="e#2934#2935#0" expanded="true" />
-                <element signature="e#3001#3002#0" expanded="true" />
-                <element signature="e#4422#4423#0" expanded="true" />
-                <element signature="e#4459#4460#0" expanded="true" />
-                <element signature="e#4897#4903#0" expanded="true" />
-                <element signature="e#14865#14866#0" expanded="true" />
-                <element signature="e#14911#14912#0" expanded="true" />
-                <element signature="e#15345#15346#0" expanded="true" />
-                <element signature="e#15391#15392#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="140">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
             </state>
           </provider>
         </entry>
@@ -107,8 +98,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphBuilding.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="124" selection-start-line="124" selection-end-line="124" />
+            <state relative-caret-position="361">
+              <caret line="125" selection-start-line="125" selection-end-line="125" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="439">
+              <caret line="440" column="30" lean-forward="true" selection-start-line="440" selection-start-column="30" selection-end-line="440" selection-end-column="30" />
+              <folding>
+                <element signature="e#1068#1078#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="96" column="33" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -130,6 +142,7 @@
       <find>4676767080</find>
       <find>R =</find>
       <find>kdConstruct</find>
+      <find>shortestPath</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,10 +156,11 @@
         <option value="$PROJECT_DIR$/src/main/java/GraphBuildingHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/Way.java" />
         <option value="$PROJECT_DIR$/src/main/java/MapNode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Router.java" />
         <option value="$PROJECT_DIR$/src/main/java/KDTree.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestGraphBuilding.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestRouter.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphDB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Router.java" />
       </list>
     </option>
   </component>
@@ -224,7 +238,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533375379256" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533381335798" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -240,7 +254,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestGraphBuilding">
+  <component name="RunManager" selected="JUnit.TestRouter">
     <configuration name="TestGraphBuilding" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bearmaps" />
       <option name="PACKAGE_NAME" value="" />
@@ -300,10 +314,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestGraphBuilding" />
-        <item itemvalue="JUnit.TestGraphBuildingTiny" />
         <item itemvalue="JUnit.TestRouter" />
         <item itemvalue="JUnit.TestRouterTiny" />
+        <item itemvalue="JUnit.TestGraphBuilding" />
+        <item itemvalue="JUnit.TestGraphBuildingTiny" />
         <item itemvalue="JUnit.TestRasterer" />
       </list>
     </recent_temporary>
@@ -326,45 +340,45 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestGraphBuilding - 2018.08.04 at 02h 15m 43s.xml">
-      <configuration name="TestGraphBuilding" configurationId="JUnit" />
+    <history-entry file="TestRouter - 2018.08.04 at 04h 13m 37s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestGraphBuildingTiny - 2018.08.04 at 02h 18m 04s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    <history-entry file="TestRouter - 2018.08.04 at 04h 13m 58s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestGraphBuildingTiny - 2018.08.04 at 02h 18m 59s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    <history-entry file="TestRouter - 2018.08.04 at 04h 14m 06s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestGraphBuildingTiny - 2018.08.04 at 02h 22m 49s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    <history-entry file="TestRouter - 2018.08.04 at 04h 14m 48s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestGraphBuildingTiny - 2018.08.04 at 02h 22m 54s.xml">
-      <configuration name="TestGraphBuildingTiny" configurationId="JUnit" />
+    <history-entry file="TestRouter - 2018.08.04 at 04h 14m 56s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestGraphBuilding - 2018.08.04 at 02h 23m 58s.xml">
-      <configuration name="TestGraphBuilding" configurationId="JUnit" />
+    <history-entry file="TestRouter - 2018.08.04 at 04h 15m 18s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestGraphBuilding - 2018.08.04 at 02h 29m 37s.xml">
-      <configuration name="TestGraphBuilding" configurationId="JUnit" />
+    <history-entry file="TestRouter - 2018.08.04 at 04h 15m 23s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestGraphBuilding - 2018.08.04 at 02h 31m 43s.xml">
-      <configuration name="TestGraphBuilding" configurationId="JUnit" />
+    <history-entry file="TestRouter - 2018.08.04 at 04h 15m 29s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestGraphBuilding - 2018.08.04 at 02h 33m 24s.xml">
-      <configuration name="TestGraphBuilding" configurationId="JUnit" />
+    <history-entry file="TestRouter - 2018.08.04 at 04h 15m 34s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestGraphBuilding - 2018.08.04 at 02h 34m 27s.xml">
-      <configuration name="TestGraphBuilding" configurationId="JUnit" />
+    <history-entry file="TestRouter - 2018.08.04 at 04h 15m 40s.xml">
+      <configuration name="TestRouter" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63340000" />
+    <option name="totallyTimeSpent" value="69003000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23426573" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23426573" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -373,16 +387,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.22356495" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.42900303" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4995005" visible="true" weight="0.25881168" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39476335" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Style Checker" order="9" visible="true" weight="0.4572004" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.0" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Style Checker" order="9" weight="0.4572004" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.19033232" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5004995" side_tool="true" weight="0.11480363" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.5840886" />
       <window_info anchor="bottom" id="Floobits" order="13" />
       <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32967034" />
@@ -404,6 +418,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Router.java</url>
+          <line>86</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="((HashMap)edgeConnections).entrySet().toArray()[1]" custom="java.util.HashMap" />
@@ -552,20 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestRouter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphDBLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -606,6 +616,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphBuilding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="125" selection-start-line="125" selection-end-line="125" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/KDTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -620,29 +637,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphBuilding.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="439">
+          <caret line="440" column="30" lean-forward="true" selection-start-line="440" selection-start-column="30" selection-end-line="440" selection-end-column="30" />
+          <folding>
+            <element signature="e#1068#1078#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphDB.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestRouter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="289" column="26" selection-start-line="289" selection-start-column="26" selection-end-line="289" selection-end-column="26" />
-          <folding>
-            <element signature="e#1068#1078#0" expanded="true" />
-            <element signature="e#2934#2935#0" expanded="true" />
-            <element signature="e#3001#3002#0" expanded="true" />
-            <element signature="e#4422#4423#0" expanded="true" />
-            <element signature="e#4459#4460#0" expanded="true" />
-            <element signature="e#4897#4903#0" expanded="true" />
-            <element signature="e#14865#14866#0" expanded="true" />
-            <element signature="e#14911#14912#0" expanded="true" />
-            <element signature="e#15345#15346#0" expanded="true" />
-            <element signature="e#15391#15392#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="140">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="96" column="33" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
         </state>
       </provider>
     </entry>

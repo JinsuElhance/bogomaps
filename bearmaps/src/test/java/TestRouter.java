@@ -38,6 +38,23 @@ public class TestRouter {
         }
     }
 
+    @Test
+    public void shortestPathTime() {
+        double total = 0.0;
+        for (int i = 0; i < 20; i++) {
+            double stlon = MapServer.ROOT_ULLON + (MapServer.ROOT_LRLON - MapServer.ROOT_ULLON) * Math.random();
+            double stlat = MapServer.ROOT_LRLAT + (MapServer.ROOT_ULLAT - MapServer.ROOT_LRLAT) * Math.random();
+            double destlon = MapServer.ROOT_ULLON + (MapServer.ROOT_LRLON - MapServer.ROOT_ULLON) * Math.random();
+            double destlat = MapServer.ROOT_LRLAT + (MapServer.ROOT_ULLAT - MapServer.ROOT_LRLAT) * Math.random();
+            double start = System.currentTimeMillis();
+            Router.shortestPath(graph, stlon, stlat, destlon, destlat);
+            double end = System.currentTimeMillis();
+            total += (end - start);
+            System.out.println(end - start);
+        }
+        System.out.println(total);
+    }
+
     private List<RouteRequestParams> paramsFromFile() throws Exception {
         List<String> lines = Files.readAllLines(Paths.get(PARAMS_FILE), Charset.defaultCharset());
         List<RouteRequestParams> testParams = new ArrayList<>();
