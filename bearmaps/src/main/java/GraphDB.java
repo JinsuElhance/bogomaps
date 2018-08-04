@@ -186,20 +186,20 @@ public class GraphDB {
      * @param lat The given latitude.
      * @return The ID for the vertex closest to the <code>lon</code> and <code>lat</code>.
      */
-    public long closest(double lon, double lat) {
-        double smallestDist = 1E99;
-        long smallestId = -1;
-        for (long checkId : nodes.keySet()) {
-            double currDist = distance(lon, lat, checkId);
-            if (currDist < smallestDist) {
-                smallestDist = currDist;
-                smallestId = checkId;
-            }
-        }
-        return smallestId;
-    }
+//    public long closest(double lon, double lat) {
+//        double smallestDist = 1E99;
+//        long smallestId = -1;
+//        for (long checkId : nodes.keySet()) {
+//            double currDist = distance(lon, lat, checkId);
+//            if (currDist < smallestDist) {
+//                smallestDist = currDist;
+//                smallestId = checkId;
+//            }
+//        }
+//        return smallestId;
+//    }
 
-    public long kdClosest(double lon, double lat) {
+    public Long closest(double lon, double lat) {
 
         //Constructs the kdTree
         if (!constructed) {
@@ -214,45 +214,62 @@ public class GraphDB {
         boolean checkX = true;
         double queryX = projectToX(lon, lat);
         double queryY = projectToY(lon, lat);
-        return kdClosestHelper(null, 1E99, 1E99, queryX, queryY, checkX, theProximityMap);
+        return kdClosestHelper(theProximityMap.item, queryX, queryY, checkX, theProximityMap).id;
     }
 
-    public Long kdClosestHelper(Long currentBest, double currbestX, double currbestY, double queryX, double queryY, boolean checkX, KDTree<ProxNode> t) {
+    public ProxNode kdClosestHelper(ProxNode best, double queryX, double queryY, boolean checkX, KDTree<ProxNode> t) {
+        ProxNode toCheck;
         //Base Case + Check only right, check only left.
         if (t.left == null && t.right == null) {
-            return t.item.id;
-        } else if (t.right == null && !(t.left == null)) {
-            return kdClosestHelper(currentBest, currbestX, currbestY, queryX, queryY, !checkX, t.right);
+            return t.item;
+        }
+
+        else if (t.right == null && !(t.left == null)) {
+            return kdClosestHelper(best, queryX, queryY, !checkX, t.right);
         } else if (t.left == null && !(t.right == null)) {
-            return kdClosestHelper(currentBest, currbestX, currbestY, queryX, queryY, !checkX, t.left);
+            return kdClosestHelper(best, queryX, queryY, !checkX, t.left);
         }
 
         //If the current node is closer than the current best, then it becomes the current best.
-        if (euclidean(t.item.x, t.item.y, queryY, queryX) < euclidean(currbestX, currbestY, queryX, queryY)) {
-            currentBest = t.item.id;
+        if (euclidean(t.item.x, t.item.y, queryY, queryX) < euclidean(best.x, best.y, queryX, queryY)) {
+            best = t.item;
         }
 
-        if (checkX && Math.abs(queryX - t.item.x) < euclidean(queryX, queryY, currbestX, currbestY)) {
-//            If the hypersphere (wtf is this)  crosses the plane, there could be nearer points on the other side
-//                of the plane, so the algorithm must move down the other branch of the tree from the current node looking
-//                for closer points, following the same recursive process as the entire search.
-//            If the hypersphere doesn't intersect the splitting plane, then the algorithm continues walking up the tree,
-//              and the entire branch on the other side of that node is eliminated.
+        //Axis check for X
+        if (checkX && Math.abs(queryX - t.item.x) < euclidean(queryX, queryY, best.x, best.y)) {
+            //Check other side
+            if (best.x > t.item.x) {
+                best = kdClosestHelper(best, queryX, queryY, !checkX, t.left);
+            } else {
+                best = kdClosestHelper(best, queryX, queryY, !checkX, t.right);
+            }
+            //Eliminating other side
+        } else if (Math.abs(queryX - t.item.y) > euclidean(queryX, queryY, best.x, best.y)) {
+            return best;
         }
 
-
-
-        if (checkX && queryX < t.item.x) {
-            //recurse on t.right with checkX = false;
-        } else if (checkX && queryX > t.item.x) {
-            //recurse on t.left with checkX = false;
-        } else if (!checkX && queryY < t.item.y) {
-            //recurse on t.right with with checkX = true;
-        } else if (!checkX && queryY > t.item.y) {
-            //recurse on t.left with with checkX = true;
+        //Axis check for Y
+        if (!checkX && Math.abs(queryY - t.item.y) < euclidean(queryX, queryY, best.x, best.y)) {
+            if (best.y > t.item.y) {
+                best = kdClosestHelper(best, queryX, queryY, !checkX, t.left);
+            } else {
+                best = kdClosestHelper(best, queryX, queryY, !checkX, t.right);
+            }
+        } else if (Math.abs(queryY - t.item.y) > euclidean(queryX, queryY, best.x, best.y)) {
+            return best;
         }
 
-
+        return best;
+//
+//        if (checkX && queryX < t.item.x) {
+//            //recurse on t.right with checkX = false;
+//        } else if (checkX && queryX > t.item.x) {
+//            //recurse on t.left with checkX = false;
+//        } else if (!checkX && queryY < t.item.y) {
+//            //recurse on t.right with with checkX = true;
+//        } else if (!checkX && queryY > t.item.y) {
+//            //recurse on t.left with with checkX = true;
+//        }
     }
 
 
